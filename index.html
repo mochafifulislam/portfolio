@@ -80,6 +80,9 @@
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- Simple Icons (brand SVG icons via jsDelivr) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@13/font/simple-icons.min.css">
+
     <style>
         /* ============ THEME TOKENS ============ */
         :root {
@@ -267,6 +270,44 @@
         .glass-card {
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
+        }
+
+        /* ---- Social Brand Icons (Simple Icons Font) ---- */
+        /* Default: muted, themed color */
+        .social-icon-instagram { color: var(--text-tertiary); transition: color 0.25s ease; }
+        .social-icon-linkedin  { color: var(--text-tertiary); transition: color 0.25s ease; }
+        .social-icon-github    { color: var(--text-tertiary); transition: color 0.25s ease; }
+
+        /* Hover: reveal full brand colors */
+        .social-icon-btn:hover .social-icon-instagram { color: #E1306C; }
+        .social-icon-btn:hover .social-icon-linkedin  { color: #0A66C2; }
+        .social-icon-btn:hover .social-icon-github    { color: #181717; }
+
+        /* Dark mode: GitHub icon goes white for contrast */
+        .dark .social-icon-github { color: var(--text-tertiary); }
+        .dark .social-icon-btn:hover .social-icon-github { color: #f0f6fc; }
+
+        /* Slight scale + glow on hover for the whole button */
+        .social-icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+        .social-icon-btn:hover {
+            transform: translateY(-3px);
+        }
+        .social-icon-btn:hover .social-icon-instagram {
+            filter: drop-shadow(0 0 6px rgba(225, 48, 108, 0.45));
+        }
+        .social-icon-btn:hover .social-icon-linkedin {
+            filter: drop-shadow(0 0 6px rgba(10, 102, 194, 0.45));
+        }
+        .dark .social-icon-btn:hover .social-icon-github {
+            filter: drop-shadow(0 0 6px rgba(240, 246, 252, 0.35));
+        }
+        :not(.dark) .social-icon-btn:hover .social-icon-github {
+            filter: drop-shadow(0 0 6px rgba(24, 23, 23, 0.25));
         }
 
         /* Transition delays */
@@ -587,16 +628,16 @@
                 <!-- Social Links -->
                 <div class="flex items-center justify-around pt-2">
                     <a href="https://instagram.com/afifulislam_" target="_blank" rel="noopener noreferrer"
-                        class="p-2 rounded-lg transition-colors" style="color: var(--text-tertiary);" title="Instagram">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                        class="social-icon-btn p-2 rounded-lg transition-all" title="Instagram @afifulislam_">
+                        <i class="si si-instagram text-xl social-icon-instagram"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/moch-afiful-islam/" target="_blank" rel="noopener noreferrer"
-                        class="p-2 rounded-lg transition-colors" style="color: var(--text-tertiary);" title="LinkedIn">
-                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        class="social-icon-btn p-2 rounded-lg transition-all" title="LinkedIn Profile">
+                        <i class="si si-linkedin text-xl social-icon-linkedin"></i>
                     </a>
                     <a href="https://github.com/mochafifulislam" target="_blank" rel="noopener noreferrer"
-                        class="p-2 rounded-lg transition-colors" style="color: var(--text-tertiary);" title="GitHub">
-                        <i data-lucide="github" class="w-5 h-5"></i>
+                        class="social-icon-btn p-2 rounded-lg transition-all" title="GitHub @mochafifulislam">
+                        <i class="si si-github text-xl social-icon-github"></i>
                     </a>
                 </div>
             </div>
@@ -741,22 +782,22 @@
                 <!-- Social Icons Buttons -->
                 <div class="flex items-center justify-between px-1">
                     <a href="https://instagram.com/afifulislam_" target="_blank" rel="noopener noreferrer"
-                        class="p-2.5 rounded-xl transition-all hover:-translate-y-0.5"
-                        style="background-color: var(--bg-card-alt); color: var(--text-secondary);"
+                        class="social-icon-btn p-2.5 rounded-xl transition-all hover:-translate-y-0.5"
+                        style="background-color: var(--bg-card-alt);"
                         title="Instagram @afifulislam_">
-                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                        <i class="si si-instagram text-lg social-icon-instagram"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/moch-afiful-islam/" target="_blank" rel="noopener noreferrer"
-                        class="p-2.5 rounded-xl transition-all hover:-translate-y-0.5"
-                        style="background-color: var(--bg-card-alt); color: var(--text-secondary);"
+                        class="social-icon-btn p-2.5 rounded-xl transition-all hover:-translate-y-0.5"
+                        style="background-color: var(--bg-card-alt);"
                         title="LinkedIn Profile">
-                        <i data-lucide="linkedin" class="w-4 h-4"></i>
+                        <i class="si si-linkedin text-lg social-icon-linkedin"></i>
                     </a>
                     <a href="https://github.com/mochafifulislam" target="_blank" rel="noopener noreferrer"
-                        class="p-2.5 rounded-xl transition-all hover:-translate-y-0.5"
-                        style="background-color: var(--bg-card-alt); color: var(--text-secondary);"
+                        class="social-icon-btn p-2.5 rounded-xl transition-all hover:-translate-y-0.5"
+                        style="background-color: var(--bg-card-alt);"
                         title="GitHub @mochafifulislam">
-                        <i data-lucide="github" class="w-4 h-4"></i>
+                        <i class="si si-github text-lg social-icon-github"></i>
                     </a>
                 </div>
 
@@ -800,8 +841,8 @@
                 </div>
             </div>
 
-            <!-- SECTION 1: OVERVIEW / HOME TAB -->
-            <section id="tab-overview" class="tab-content space-y-8">
+            <!-- SECTION 1: OVERVIEW / HOME TAB (Default Main View) -->
+            <section id="tab-overview" class="tab-content active space-y-8">
 
                 <!-- Hero Banner -->
                 <div class="relative overflow-hidden rounded-3xl p-6 sm:p-10 border shadow-xl stagger-item"
@@ -1012,8 +1053,8 @@
                 </div>
             </section>
 
-            <!-- SECTION 2: PROJECTS PORTFOLIO TAB (Default Main View) -->
-            <section id="tab-projects" class="tab-content active space-y-6">
+            <!-- SECTION 2: PROJECTS PORTFOLIO TAB -->
+            <section id="tab-projects" class="tab-content space-y-6">
 
                 <!-- Subtitle Description -->
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -1503,7 +1544,7 @@
                                     style="background-color: var(--bg-card-alt); color: var(--text-secondary);">ORGANIZATION</span>
                                 <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Wakil Ketua</h3>
                                 <p class="text-xs" style="color: var(--text-tertiary);">Forum Kajian Islam FSTeM
-                                    Universitas Brawijaya (2024)</p>
+                                    Universitas Brawijaya</p>
                             </div>
                             <p class="text-xs sm:text-sm" style="color: var(--text-secondary);">
                                 Bertanggung jawab mendampingi Ketua Umum dalam supervisi divisi.
@@ -1523,7 +1564,7 @@
                                 <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Staf Ketakmiran
                                     Masjid</h3>
                                 <p class="text-xs" style="color: var(--text-tertiary);">Forum Kajian Islam FSTeM
-                                    Universitas Brawijaya (2023)</p>
+                                    Universitas Brawijaya</p>
                             </div>
                             <p class="text-xs sm:text-sm" style="color: var(--text-secondary);">
                                 Bertanggung jawab manajemen kegiatan kemakmuran masjid kampus, serta pengorganisasian
