@@ -140,6 +140,98 @@
             --scrollbar-thumb-hover: #37475f;
         }
 
+        /* Native keyframes (defined directly, independent of Tailwind's class-scanning
+           so custom animation:* declarations below always resolve, even when the
+           matching Tailwind utility class isn't literally present in the markup) */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -400px 0;
+            }
+
+            100% {
+                background-position: 400px 0;
+            }
+        }
+
+        @keyframes dotBounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0.6);
+                opacity: 0.4;
+            }
+
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes blobMove {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(20px, -25px) scale(1.08);
+            }
+
+            66% {
+                transform: translate(-15px, 15px) scale(0.95);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+            }
+
+            50% {
+                box-shadow: 0 0 32px rgba(56, 189, 248, 0.6);
+            }
+        }
+
         html {
             background: var(--bg-base);
         }
@@ -562,7 +654,7 @@
                         style="color: var(--text-secondary);">
                         <i data-lucide="layout-dashboard"
                             class="w-4 h-4 transition-transform group-hover:scale-110"></i>
-                        <span>Home</span>
+                        <span>Overview</span>
                     </button>
 
                     <button data-tab="tab-projects"
@@ -698,12 +790,12 @@
                     <div class="px-3 py-1.5 rounded-xl border text-xs font-medium flex items-center gap-2 shadow-sm"
                         style="background-color: var(--bg-card); border-color: var(--border); color: var(--text-secondary);">
                         <i data-lucide="graduation-cap" class="w-3.5 h-3.5" style="color: var(--accent);"></i>
-                        <span>S.Mat. (Universitas Brawijaya)</span>
+                        <span>S.Mat (UB) • IPK 3.18</span>
                     </div>
                     <div class="px-3 py-1.5 rounded-xl border text-xs font-medium flex items-center gap-2 shadow-sm"
                         style="background-color: var(--bg-card); border-color: var(--border); color: var(--text-secondary);">
                         <i data-lucide="cpu" class="w-3.5 h-3.5" style="color: var(--accent);"></i>
-                        <span>Computer Vision BRIN</span>
+                        <span>Riset BRIN AI</span>
                     </div>
                 </div>
             </div>
@@ -1684,7 +1776,7 @@
 
                     <!-- Direct Contact Information Cards -->
                     <div class="space-y-4">
-                        <button onclick="copyToClipboard('afifulislam@student.ub.ac.id','Email')"
+                        <button onclick="copyToClipboard('islamafiful1907@gmail.com','Email')"
                             class="stagger-item w-full text-left p-5 rounded-2xl border flex items-center gap-4 lift-hover transition-all"
                             style="background-color: var(--bg-card); border-color: var(--border);">
                             <div class="p-3 rounded-xl shrink-0"
@@ -1692,12 +1784,10 @@
                                 <i data-lucide="mail" class="w-5 h-5"></i>
                             </div>
                             <div class="flex-1">
-                                <p class="text-xs" style="color: var(--text-tertiary);">Email Utama <span
-                                        class="opacity-70">(klik untuk salin)</span></p>
+                                <p class="text-xs" style="color: var(--text-tertiary);">Email Utama</p>
                                 <p class="text-sm font-bold font-mono" style="color: var(--text-primary);">
-                                    afifulislam@student.ub.ac.id</p>
+                                    islamafiful1907@gmail.com</p>
                             </div>
-                            <i data-lucide="copy" class="w-4 h-4 shrink-0" style="color: var(--text-tertiary);"></i>
                         </button>
 
                         <a href="https://www.linkedin.com/in/moch-afiful-islam/" target="_blank"
@@ -1722,7 +1812,7 @@
                             </div>
                             <div>
                                 <p class="text-xs" style="color: var(--text-tertiary);">Lokasi Dominan</p>
-                                <p class="text-sm font-bold" style="color: var(--text-primary);">Malang / Surabaya,
+                                <p class="text-sm font-bold" style="color: var(--text-primary);">Malang, Jawa Timur,
                                     Indonesia</p>
                             </div>
                         </div>
@@ -1956,7 +2046,7 @@
         const pageTitle = document.getElementById('page-title');
 
         const tabTitles = {
-            'tab-overview': 'Overview',
+            'tab-overview': 'Overview & Summary',
             'tab-projects': 'Projects Portfolio',
             'tab-education': 'Riwayat Pendidikan',
             'tab-experience': 'Pengalaman & Riset',
@@ -2214,7 +2304,7 @@
             } else if (query.includes('ipk') || query.includes('bept') || query.includes('skor') || query.includes('nilai')) {
                 reply = "Latar belakang akademis Afiful: IPK Sarjana Matematika UB adalah 3.18 / 4.00 (Sangat Memuaskan), Nilai Akhir MA Isy Karima 86.8 / 100, serta Skor BEPT (Brawijaya English Proficiency Test) sebesar 500.";
             } else if (query.includes('kontak') || query.includes('email') || query.includes('hubungi')) {
-                reply = "Anda dapat menghubungi Afiful via Email: afifulislam@student.ub.ac.id, LinkedIn: linkedin.com/in/moch-afiful-islam/, atau GitHub: github.com/mochafifulislam.";
+                reply = "Anda dapat menghubungi Afiful via Email: islamafiful1907@gmail.com, LinkedIn: linkedin.com/in/moch-afiful-islam/, atau GitHub: github.com/mochafifulislam.";
             }
 
             const botBubble = document.createElement('div');
