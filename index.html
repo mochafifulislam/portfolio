@@ -274,18 +274,42 @@
 
         /* ---- Social Brand Icons (Simple Icons Font) ---- */
         /* Default: muted, themed color */
-        .social-icon-instagram { color: var(--text-tertiary); transition: color 0.25s ease; }
-        .social-icon-linkedin  { color: var(--text-tertiary); transition: color 0.25s ease; }
-        .social-icon-github    { color: var(--text-tertiary); transition: color 0.25s ease; }
+        .social-icon-instagram {
+            color: var(--text-tertiary);
+            transition: color 0.25s ease;
+        }
+
+        .social-icon-linkedin {
+            color: var(--text-tertiary);
+            transition: color 0.25s ease;
+        }
+
+        .social-icon-github {
+            color: var(--text-tertiary);
+            transition: color 0.25s ease;
+        }
 
         /* Hover: reveal full brand colors */
-        .social-icon-btn:hover .social-icon-instagram { color: #E1306C; }
-        .social-icon-btn:hover .social-icon-linkedin  { color: #0A66C2; }
-        .social-icon-btn:hover .social-icon-github    { color: #181717; }
+        .social-icon-btn:hover .social-icon-instagram {
+            color: #E1306C;
+        }
+
+        .social-icon-btn:hover .social-icon-linkedin {
+            color: #0A66C2;
+        }
+
+        .social-icon-btn:hover .social-icon-github {
+            color: #181717;
+        }
 
         /* Dark mode: GitHub icon goes white for contrast */
-        .dark .social-icon-github { color: var(--text-tertiary); }
-        .dark .social-icon-btn:hover .social-icon-github { color: #f0f6fc; }
+        .dark .social-icon-github {
+            color: var(--text-tertiary);
+        }
+
+        .dark .social-icon-btn:hover .social-icon-github {
+            color: #f0f6fc;
+        }
 
         /* Slight scale + glow on hover for the whole button */
         .social-icon-btn {
@@ -294,18 +318,23 @@
             justify-content: center;
             transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
         }
+
         .social-icon-btn:hover {
             transform: translateY(-3px);
         }
+
         .social-icon-btn:hover .social-icon-instagram {
             filter: drop-shadow(0 0 6px rgba(225, 48, 108, 0.45));
         }
+
         .social-icon-btn:hover .social-icon-linkedin {
             filter: drop-shadow(0 0 6px rgba(10, 102, 194, 0.45));
         }
+
         .dark .social-icon-btn:hover .social-icon-github {
             filter: drop-shadow(0 0 6px rgba(240, 246, 252, 0.35));
         }
+
         :not(.dark) .social-icon-btn:hover .social-icon-github {
             filter: drop-shadow(0 0 6px rgba(24, 23, 23, 0.25));
         }
@@ -485,6 +514,94 @@
             bottom: 0.75rem;
             width: 2px;
             background-color: var(--border);
+        }
+
+        /* ---- Marquee / Ticker Animation ---- */
+        .marquee-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee-wrapper::before,
+        .marquee-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .marquee-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-card), transparent);
+        }
+
+        .marquee-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-card), transparent);
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            gap: 0.5rem;
+        }
+
+        .marquee-track--left {
+            animation: marquee-left 28s linear infinite;
+        }
+
+        .marquee-track--right {
+            animation: marquee-right 32s linear infinite;
+        }
+
+        .marquee-wrapper:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee-left {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes marquee-right {
+            0%   { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        .marquee-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background-color: var(--bg-card-alt);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--accent);
+            white-space: nowrap;
+            transition: border-color 0.2s, background-color 0.2s, color 0.2s, box-shadow 0.2s;
+            cursor: default;
+        }
+
+        .marquee-chip:hover {
+            border-color: var(--accent);
+            background-color: var(--accent-soft-bg);
+            box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 20%, transparent);
+        }
+
+        .marquee-chip.alt {
+            color: var(--accent2);
+        }
+
+        .marquee-chip.alt:hover {
+            border-color: var(--accent2);
+            background-color: color-mix(in srgb, var(--accent2) 10%, transparent);
+            box-shadow: 0 0 10px color-mix(in srgb, var(--accent2) 20%, transparent);
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -783,20 +900,17 @@
                 <div class="flex items-center justify-between px-1">
                     <a href="https://instagram.com/afifulislam_" target="_blank" rel="noopener noreferrer"
                         class="social-icon-btn p-2.5 rounded-xl transition-all hover:-translate-y-0.5"
-                        style="background-color: var(--bg-card-alt);"
-                        title="Instagram @afifulislam_">
+                        style="background-color: var(--bg-card-alt);" title="Instagram @afifulislam_">
                         <i class="si si-instagram text-lg social-icon-instagram"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/moch-afiful-islam/" target="_blank" rel="noopener noreferrer"
                         class="social-icon-btn p-2.5 rounded-xl transition-all hover:-translate-y-0.5"
-                        style="background-color: var(--bg-card-alt);"
-                        title="LinkedIn Profile">
+                        style="background-color: var(--bg-card-alt);" title="LinkedIn Profile">
                         <i class="si si-linkedin text-lg social-icon-linkedin"></i>
                     </a>
                     <a href="https://github.com/mochafifulislam" target="_blank" rel="noopener noreferrer"
                         class="social-icon-btn p-2.5 rounded-xl transition-all hover:-translate-y-0.5"
-                        style="background-color: var(--bg-card-alt);"
-                        title="GitHub @mochafifulislam">
+                        style="background-color: var(--bg-card-alt);" title="GitHub @mochafifulislam">
                         <i class="si si-github text-lg social-icon-github"></i>
                     </a>
                 </div>
@@ -1009,46 +1123,60 @@
                         <i data-lucide="layers" class="w-5 h-5" style="color: var(--accent);"></i>
                         Technical Stack & Competencies
                     </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="px-3 py-1.5 rounded-xl border text-xs font-mono font-medium transition-all hover:-translate-y-0.5"
-                            style="background-color: var(--bg-card-alt); border-color: var(--border); color: var(--accent);">Python</span>
-                        <span
-                            class="px-3 py-1.5 rounded-xl border text-xs font-mono font-medium transition-all hover:-translate-y-0.5"
-                            style="background-color: var(--bg-card-alt); border-color: var(--border); color: var(--accent);">PyTorch
-                            & VGG19</span>
-                        <span
-                            class="px-3 py-1.5 rounded-xl border text-xs font-mono font-medium transition-all hover:-translate-y-0.5"
-                            style="background-color: var(--bg-card-alt); border-color: var(--border); color: var(--accent);">YOLOv12
-                            & OpenCV</span>
-                        <span
-                            class="px-3 py-1.5 rounded-xl border text-xs font-mono font-medium transition-all hover:-translate-y-0.5"
-                            style="background-color: var(--bg-card-alt); border-color: var(--border); color: var(--accent);">Scikit-Learn
-                            (K-Means)</span>
-                        <span
-                            class="px-3 py-1.5 rounded-xl border text-xs font-mono font-medium transition-all hover:-translate-y-0.5"
-                            style="background-color: var(--bg-card-alt); border-color: var(--border); color: var(--accent);">Deep
-                            Ensemble Learning</span>
-                        <span
-                            class="px-3 py-1.5 rounded-xl border text-xs font-mono font-medium transition-all hover:-translate-y-0.5"
-                            style="background-color: var(--bg-card-alt); border-color: var(--border); color: var(--accent);">Mathematical
-                            Modeling</span>
-                        <span
-                            class="px-3 py-1.5 rounded-xl border text-xs font-mono font-medium transition-all hover:-translate-y-0.5"
-                            style="background-color: var(--bg-card-alt); border-color: var(--border); color: var(--accent);">Data
-                            Cleansing & ETL</span>
-                        <span
-                            class="px-3 py-1.5 rounded-xl border text-xs font-mono font-medium transition-all hover:-translate-y-0.5"
-                            style="background-color: var(--bg-card-alt); border-color: var(--border); color: var(--accent);">SQL
-                            & Database Ops</span>
-                        <span
-                            class="px-3 py-1.5 rounded-xl border text-xs font-mono font-medium transition-all hover:-translate-y-0.5"
-                            style="background-color: var(--bg-card-alt); border-color: var(--border); color: var(--accent);">Microsoft
-                            Azure AI</span>
-                        <span
-                            class="px-3 py-1.5 rounded-xl border text-xs font-mono font-medium transition-all hover:-translate-y-0.5"
-                            style="background-color: var(--bg-card-alt); border-color: var(--border); color: var(--accent);">Git
-                            & GitHub Workflow</span>
+                    <!-- Marquee Row 1 → bergerak ke kiri -->
+                    <div class="marquee-wrapper">
+                        <div class="marquee-track marquee-track--left">
+                            <!-- Set A -->
+                            <span class="marquee-chip">🐍 Python</span>
+                            <span class="marquee-chip">🔥 PyTorch</span>
+                            <span class="marquee-chip">🧠 VGG19 / ResNet</span>
+                            <span class="marquee-chip">👁️ YOLOv12</span>
+                            <span class="marquee-chip">📷 OpenCV</span>
+                            <span class="marquee-chip">📊 Scikit-Learn</span>
+                            <span class="marquee-chip">🔵 K-Means Clustering</span>
+                            <span class="marquee-chip">⚡ Deep Ensemble Learning</span>
+                            <span class="marquee-chip">📐 Mathematical Modeling</span>
+                            <span class="marquee-chip">🗄️ SQL &amp; Database Ops</span>
+                            <!-- Set B (duplikat untuk seamless loop) -->
+                            <span class="marquee-chip">🐍 Python</span>
+                            <span class="marquee-chip">🔥 PyTorch</span>
+                            <span class="marquee-chip">🧠 VGG19 / ResNet</span>
+                            <span class="marquee-chip">👁️ YOLOv12</span>
+                            <span class="marquee-chip">📷 OpenCV</span>
+                            <span class="marquee-chip">📊 Scikit-Learn</span>
+                            <span class="marquee-chip">🔵 K-Means Clustering</span>
+                            <span class="marquee-chip">⚡ Deep Ensemble Learning</span>
+                            <span class="marquee-chip">📐 Mathematical Modeling</span>
+                            <span class="marquee-chip">🗄️ SQL &amp; Database Ops</span>
+                        </div>
+                    </div>
+
+                    <!-- Marquee Row 2 → bergerak ke kanan -->
+                    <div class="marquee-wrapper">
+                        <div class="marquee-track marquee-track--right">
+                            <!-- Set A -->
+                            <span class="marquee-chip alt">☁️ Microsoft Azure AI</span>
+                            <span class="marquee-chip alt">🌿 Git &amp; GitHub Workflow</span>
+                            <span class="marquee-chip alt">🧹 Data Cleansing &amp; ETL</span>
+                            <span class="marquee-chip alt">📈 Data Visualization</span>
+                            <span class="marquee-chip alt">🔢 Numerical Methods</span>
+                            <span class="marquee-chip alt">🎯 Optimization Algorithms</span>
+                            <span class="marquee-chip alt">🖼️ Image Processing</span>
+                            <span class="marquee-chip alt">🤖 Computer Vision</span>
+                            <span class="marquee-chip alt">📉 Statistical Analysis</span>
+                            <span class="marquee-chip alt">🧪 Experiment Design</span>
+                            <!-- Set B (duplikat untuk seamless loop) -->
+                            <span class="marquee-chip alt">☁️ Microsoft Azure AI</span>
+                            <span class="marquee-chip alt">🌿 Git &amp; GitHub Workflow</span>
+                            <span class="marquee-chip alt">🧹 Data Cleansing &amp; ETL</span>
+                            <span class="marquee-chip alt">📈 Data Visualization</span>
+                            <span class="marquee-chip alt">🔢 Numerical Methods</span>
+                            <span class="marquee-chip alt">🎯 Optimization Algorithms</span>
+                            <span class="marquee-chip alt">🖼️ Image Processing</span>
+                            <span class="marquee-chip alt">🤖 Computer Vision</span>
+                            <span class="marquee-chip alt">📉 Statistical Analysis</span>
+                            <span class="marquee-chip alt">🧪 Experiment Design</span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1434,9 +1562,10 @@
             <!-- SECTION 4: EXPERIENCE TAB -->
             <section id="tab-experience" class="tab-content space-y-6">
                 <div class="space-y-2">
-                    <h2 class="text-xl font-bold" style="color: var(--text-primary);">Pengalaman Riset & Organisasi</h2>
+                    <h2 class="text-xl font-bold" style="color: var(--text-primary);">Pengalaman Riset, Pengajaran &
+                        Organisasi</h2>
                     <p class="text-sm" style="color: var(--text-secondary);">Rekam jejak penelitian kecerdasan
-                        artifisial, operasional data perbankan, dan kepemimpinan.</p>
+                        artifisial, asisten praktikum, operasional data perbankan, dan kepemimpinan.</p>
                 </div>
 
                 <div class="relative pl-6 space-y-8 timeline-track">
@@ -1509,7 +1638,7 @@
                     <!-- Experience 3: Ketua Umum FORKALAM FSTeM -->
                     <div class="stagger-item relative group">
                         <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full transition-colors"
-                            style="background-color: var(--bg-surface); border: 2px solid var(--border-strong);"></div>
+                            style="background-color: var(--bg-surface); border: 2px solid var(--accent2);"></div>
                         <div class="p-6 rounded-3xl border shadow-sm space-y-3 lift-hover"
                             style="background-color: var(--bg-card); border-color: var(--border);">
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b pb-3"
@@ -1517,8 +1646,7 @@
                                 <div>
                                     <span class="px-2.5 py-0.5 rounded-md border text-[11px] font-mono font-semibold"
                                         style="background-color: rgba(79,70,229,0.1); color: var(--accent2); border-color: rgba(79,70,229,0.25);">LEADERSHIP</span>
-                                    <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Ketua Umum
-                                    </h3>
+                                    <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Ketua Umum</h3>
                                     <p class="text-xs font-medium" style="color: var(--accent2);">Forum Kajian Islam
                                         FSTeM Universitas Brawijaya</p>
                                 </div>
@@ -1526,29 +1654,55 @@
                                     style="background-color: var(--bg-card-alt); color: var(--text-secondary);">Periode
                                     2025</span>
                             </div>
-                            <p class="text-xs sm:text-sm" style="color: var(--text-secondary);">
-                                Memimpin jalannya arah strategis organisasi mahasiswa tingkat fakultas, mengoordinasi
-                                program kerja bidang pengkajian, serta manajemen eksekutif pengurus harian.
-                            </p>
+                            <ul class="text-xs sm:text-sm space-y-2 list-disc list-inside"
+                                style="color: var(--text-secondary);">
+                                <li>Memimpin dan menetapkan arah strategis organisasi mahasiswa Islam tingkat
+                                    Fakultas Sains dan Teknologi (FSTeM) Universitas Brawijaya.</li>
+                                <li>Mengoordinasikan seluruh program kerja bidang pengkajian keislaman, syiar, dan
+                                    pengembangan sumber daya anggota secara berkala.</li>
+                                <li>Memimpin rapat pleno pengurus harian dan mengevaluasi realisasi program kerja
+                                    tiap divisi setiap triwulan.</li>
+                                <li>Menjalin hubungan eksternal dengan BEM, UKM, dan lembaga dakwah kampus lain
+                                    dalam rangka sinergi kegiatan kemahasiswaan Islam.</li>
+                                <li>Bertanggung jawab penuh atas keberlangsungan, akuntabilitas, dan integritas
+                                    organisasi kepada seluruh anggota dan sivitas akademika.</li>
+                            </ul>
                         </div>
                     </div>
 
                     <!-- Experience 4: Wakil Ketua FORKALAM FSTeM -->
                     <div class="stagger-item relative group">
                         <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full transition-colors"
-                            style="background-color: var(--bg-surface); border: 2px solid var(--border-strong);"></div>
-                        <div class="p-6 rounded-3xl border shadow-sm space-y-4 lift-hover"
+                            style="background-color: var(--bg-surface); border: 2px solid var(--accent2);"></div>
+                        <div class="p-6 rounded-3xl border shadow-sm space-y-3 lift-hover"
                             style="background-color: var(--bg-card); border-color: var(--border);">
-                            <div class="border-b pb-3" style="border-color: var(--border);">
-                                <span class="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-semibold"
-                                    style="background-color: var(--bg-card-alt); color: var(--text-secondary);">ORGANIZATION</span>
-                                <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Wakil Ketua</h3>
-                                <p class="text-xs" style="color: var(--text-tertiary);">Forum Kajian Islam FSTeM
-                                    Universitas Brawijaya</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b pb-3"
+                                style="border-color: var(--border);">
+                                <div>
+                                    <span class="px-2.5 py-0.5 rounded-md border text-[11px] font-mono font-semibold"
+                                        style="background-color: rgba(79,70,229,0.1); color: var(--accent2); border-color: rgba(79,70,229,0.25);">LEADERSHIP</span>
+                                    <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Wakil Ketua
+                                        Umum</h3>
+                                    <p class="text-xs font-medium" style="color: var(--accent2);">Forum Kajian Islam
+                                        FSTeM Universitas Brawijaya</p>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-xl self-start"
+                                    style="background-color: var(--bg-card-alt); color: var(--text-secondary);">Periode
+                                    2024</span>
                             </div>
-                            <p class="text-xs sm:text-sm" style="color: var(--text-secondary);">
-                                Bertanggung jawab mendampingi Ketua Umum dalam supervisi divisi.
-                            </p>
+                            <ul class="text-xs sm:text-sm space-y-2 list-disc list-inside"
+                                style="color: var(--text-secondary);">
+                                <li>Mendampingi dan mendukung Ketua Umum dalam pengambilan keputusan strategis
+                                    serta koordinasi lintas bidang kepengurusan.</li>
+                                <li>Mensupervisi dan memantau kinerja divisi-divisi dalam menjalankan program
+                                    kerja agar selaras dengan visi dan misi organisasi.</li>
+                                <li>Menjadi penghubung komunikasi internal antara pengurus harian dengan
+                                    anggota aktif organisasi.</li>
+                                <li>Mengambil alih tugas dan wewenang Ketua Umum apabila berhalangan hadir
+                                    dalam kegiatan resmi organisasi.</li>
+                                <li>Turut serta merumuskan kebijakan dan agenda program kerja tahunan
+                                    dalam musyawarah kerja organisasi.</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -1556,20 +1710,177 @@
                     <div class="stagger-item relative group">
                         <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full transition-colors"
                             style="background-color: var(--bg-surface); border: 2px solid var(--border-strong);"></div>
-                        <div class="p-6 rounded-3xl border shadow-sm space-y-4 lift-hover"
+                        <div class="p-6 rounded-3xl border shadow-sm space-y-3 lift-hover"
                             style="background-color: var(--bg-card); border-color: var(--border);">
-                            <div class="border-b pb-3" style="border-color: var(--border);">
-                                <span class="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-semibold"
-                                    style="background-color: var(--bg-card-alt); color: var(--text-secondary);">ORGANIZATION</span>
-                                <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Staf Ketakmiran
-                                    Masjid</h3>
-                                <p class="text-xs" style="color: var(--text-tertiary);">Forum Kajian Islam FSTeM
-                                    Universitas Brawijaya</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b pb-3"
+                                style="border-color: var(--border);">
+                                <div>
+                                    <span class="px-2.5 py-0.5 rounded-md border text-[11px] font-mono font-semibold"
+                                        style="background-color: var(--bg-card-alt); color: var(--text-secondary); border-color: var(--border);">ORGANIZATION</span>
+                                    <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Staf
+                                        Ketakmiran Masjid</h3>
+                                    <p class="text-xs font-medium" style="color: var(--text-tertiary);">Forum Kajian
+                                        Islam FSTeM Universitas Brawijaya</p>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-xl self-start"
+                                    style="background-color: var(--bg-card-alt); color: var(--text-secondary);">Periode
+                                    2023</span>
                             </div>
-                            <p class="text-xs sm:text-sm" style="color: var(--text-secondary);">
-                                Bertanggung jawab manajemen kegiatan kemakmuran masjid kampus, serta pengorganisasian
-                                acara syiar sosial keagamaan.
-                            </p>
+                            <ul class="text-xs sm:text-sm space-y-2 list-disc list-inside"
+                                style="color: var(--text-secondary);">
+                                <li>Mengelola jadwal kegiatan ibadah dan kemakmuran masjid kampus secara
+                                    rutin, termasuk koordinasi muadzin, imam, dan petugas kebersihan.</li>
+                                <li>Mengorganisasi acara-acara syiar sosial keagamaan seperti kajian rutin,
+                                    peringatan hari besar Islam, dan kegiatan bakti sosial.</li>
+                                <li>Menyiapkan sarana dan prasarana masjid untuk mendukung kegiatan
+                                    keagamaan mahasiswa dan sivitas akademika.</li>
+                                <li>Berkoordinasi dengan divisi lain dalam rangka sinergi program kegiatan
+                                    dakwah kampus dan pemberdayaan jamaah masjid.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 6: Asisten Praktikum - Metode Numerik -->
+                    <div class="stagger-item relative group">
+                        <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full transition-colors"
+                            style="background-color: var(--bg-surface); border: 2px solid var(--accent2);"></div>
+                        <div class="p-6 rounded-3xl border shadow-sm space-y-3 lift-hover"
+                            style="background-color: var(--bg-card); border-color: var(--border);">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b pb-3"
+                                style="border-color: var(--border);">
+                                <div>
+                                    <span class="px-2.5 py-0.5 rounded-md border text-[11px] font-mono font-semibold"
+                                        style="background-color: color-mix(in srgb, var(--accent2) 12%, transparent); color: var(--accent2); border-color: color-mix(in srgb, var(--accent2) 30%, transparent);">TEACHING
+                                        ASSISTANT</span>
+                                    <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Asisten
+                                        Praktikum Metode Numerik</h3>
+                                    <p class="text-xs font-medium" style="color: var(--accent2);">Departemen Matematika,
+                                        Universitas Brawijaya</p>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-xl self-start"
+                                    style="background-color: var(--bg-card-alt); color: var(--text-secondary);">Genap
+                                    2024/2025</span>
+                            </div>
+                            <ul class="text-xs sm:text-sm space-y-2 list-disc list-inside"
+                                style="color: var(--text-secondary);">
+                                <li>Memandu mahasiswa dalam implementasi metode numerik seperti eliminasi Gauss,
+                                    interpolasi, integrasi numerik, dan penyelesaian persamaan diferensial
+                                    menggunakan Python/MATLAB di laboratorium komputer.</li>
+                                <li>Menyiapkan modul praktikum dan soal latihan yang terstruktur untuk memperkuat
+                                    pemahaman mahasiswa terhadap algoritma numerik.</li>
+                                <li>Mengoreksi laporan praktikum dan memberikan umpan balik konstruktif terhadap
+                                    implementasi kode dan analisis hasil komputasi mahasiswa.</li>
+                                <li>Membimbing mahasiswa dalam debugging kode dan pemahaman konsep galat
+                                    (error) numerik serta konvergensi metode.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 7: Asisten Praktikum - Algoritma Pemrograman II -->
+                    <div class="stagger-item relative group">
+                        <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full transition-colors"
+                            style="background-color: var(--bg-surface); border: 2px solid var(--accent2);"></div>
+                        <div class="p-6 rounded-3xl border shadow-sm space-y-3 lift-hover"
+                            style="background-color: var(--bg-card); border-color: var(--border);">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b pb-3"
+                                style="border-color: var(--border);">
+                                <div>
+                                    <span class="px-2.5 py-0.5 rounded-md border text-[11px] font-mono font-semibold"
+                                        style="background-color: color-mix(in srgb, var(--accent2) 12%, transparent); color: var(--accent2); border-color: color-mix(in srgb, var(--accent2) 30%, transparent);">TEACHING
+                                        ASSISTANT</span>
+                                    <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Asisten
+                                        Praktikum Algoritma Pemrograman II</h3>
+                                    <p class="text-xs font-medium" style="color: var(--accent2);">Departemen Matematika,
+                                        Universitas Brawijaya</p>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-xl self-start"
+                                    style="background-color: var(--bg-card-alt); color: var(--text-secondary);">Genap
+                                    2024/2025</span>
+                            </div>
+                            <ul class="text-xs sm:text-sm space-y-2 list-disc list-inside"
+                                style="color: var(--text-secondary);">
+                                <li>Membimbing mahasiswa dalam pengembangan kemampuan pemrograman lanjutan
+                                    mencakup struktur data, algoritma pencarian &amp; pengurutan, dan rekursi
+                                    menggunakan Python.</li>
+                                <li>Memberikan penjelasan konseptual dan demonstrasi langsung terhadap materi
+                                    yang belum dipahami mahasiswa saat sesi praktikum berlangsung.</li>
+                                <li>Menilai dan memberikan penilaian objektif terhadap tugas praktikum, kuis
+                                    singkat, dan asistensi laporan akhir mahasiswa.</li>
+                                <li>Membantu mahasiswa dalam memahami paradigma pemrograman berorientasi objek
+                                    (OOP) dan penerapannya dalam pemecahan masalah komputasi.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 8: Asisten Praktikum - Optimisasi Numerik -->
+                    <div class="stagger-item relative group">
+                        <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full transition-colors"
+                            style="background-color: var(--bg-surface); border: 2px solid var(--accent2);"></div>
+                        <div class="p-6 rounded-3xl border shadow-sm space-y-3 lift-hover"
+                            style="background-color: var(--bg-card); border-color: var(--border);">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b pb-3"
+                                style="border-color: var(--border);">
+                                <div>
+                                    <span class="px-2.5 py-0.5 rounded-md border text-[11px] font-mono font-semibold"
+                                        style="background-color: color-mix(in srgb, var(--accent2) 12%, transparent); color: var(--accent2); border-color: color-mix(in srgb, var(--accent2) 30%, transparent);">TEACHING
+                                        ASSISTANT</span>
+                                    <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Asisten
+                                        Praktikum Optimisasi Numerik</h3>
+                                    <p class="text-xs font-medium" style="color: var(--accent2);">Departemen Matematika,
+                                        Universitas Brawijaya</p>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-xl self-start"
+                                    style="background-color: var(--bg-card-alt); color: var(--text-secondary);">Ganjil
+                                    2025/2026</span>
+                            </div>
+                            <ul class="text-xs sm:text-sm space-y-2 list-disc list-inside"
+                                style="color: var(--text-secondary);">
+                                <li>Memandu mahasiswa dalam implementasi algoritma optimisasi klasik dan modern
+                                    seperti gradient descent, Newton's method, dan metode penalty/barrier
+                                    menggunakan Python/SciPy.</li>
+                                <li>Menjelaskan konsep fungsi objektif, batasan (constraints), dan kondisi
+                                    optimalitas (KKT conditions) secara intuitif melalui contoh kasus nyata.</li>
+                                <li>Mendampingi mahasiswa dalam pengerjaan proyek optimisasi akhir semester,
+                                    termasuk formulasi masalah, implementasi, dan interpretasi hasil.</li>
+                                <li>Menyusun bahan evaluasi praktikum dan mengoreksi laporan dengan fokus pada
+                                    ketepatan analisis konvergensi dan efisiensi algoritma.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 9: Asisten Praktikum - Pengolahan Citra Digital -->
+                    <div class="stagger-item relative group">
+                        <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full transition-colors"
+                            style="background-color: var(--bg-surface); border: 2px solid var(--accent2);"></div>
+                        <div class="p-6 rounded-3xl border shadow-sm space-y-3 lift-hover"
+                            style="background-color: var(--bg-card); border-color: var(--border);">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b pb-3"
+                                style="border-color: var(--border);">
+                                <div>
+                                    <span class="px-2.5 py-0.5 rounded-md border text-[11px] font-mono font-semibold"
+                                        style="background-color: color-mix(in srgb, var(--accent2) 12%, transparent); color: var(--accent2); border-color: color-mix(in srgb, var(--accent2) 30%, transparent);">TEACHING
+                                        ASSISTANT</span>
+                                    <h3 class="text-lg font-bold mt-1" style="color: var(--text-primary);">Asisten
+                                        Praktikum Pengolahan Citra Digital</h3>
+                                    <p class="text-xs font-medium" style="color: var(--accent2);">Departemen Matematika,
+                                        Universitas Brawijaya</p>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-xl self-start"
+                                    style="background-color: var(--bg-card-alt); color: var(--text-secondary);">Ganjil
+                                    2025/2026</span>
+                            </div>
+                            <ul class="text-xs sm:text-sm space-y-2 list-disc list-inside"
+                                style="color: var(--text-secondary);">
+                                <li>Membimbing mahasiswa dalam teknik-teknik dasar dan lanjutan pengolahan citra
+                                    digital seperti filtering, segmentasi, deteksi tepi, transformasi morfologi,
+                                    dan histogram equalization menggunakan OpenCV &amp; Python.</li>
+                                <li>Mendemonstrasikan penerapan algoritma computer vision pada kasus nyata
+                                    seperti deteksi objek, pengenalan wajah, dan klasifikasi citra medis.</li>
+                                <li>Mendampingi mahasiswa dalam mengerjakan proyek akhir berbasis citra digital,
+                                    mulai dari eksplorasi dataset hingga evaluasi performa model.</li>
+                                <li>Mengoreksi laporan praktikum secara terstruktur dan memberikan masukan
+                                    terhadap kualitas implementasi serta analisis visual hasil pemrosesan citra.</li>
+                            </ul>
                         </div>
                     </div>
 
