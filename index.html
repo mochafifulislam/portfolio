@@ -563,6 +563,43 @@
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
+
+        /* ---- Back to top floating button ---- */
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 99;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--panel);
+            border: 1px solid var(--green-border);
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: all .3s ease;
+            box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.6);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--panel-alt);
+            border-color: var(--green);
+            color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px -6px rgba(182, 255, 60, 0.4);
+        }
     </style>
 </head>
 
@@ -575,7 +612,7 @@
                 <div class="brand-mark mono">AI</div>
                 <div>
                     <div class="brand-name">Moch Afiful Islam</div>
-                    <div class="brand-role mono">COMPUTER VISION ENGINEER</div>
+
                 </div>
             </div>
             <div class="nav-links hide-mobile">
@@ -586,15 +623,19 @@
             </div>
             <div style="display:flex; align-items:center; gap:10px;">
                 <button onclick="toggleLang()" id="lang-toggle" class="btn-ghost mono"
-                    title="Switch language / Ganti bahasa" style="padding: 9px 12px; font-weight:700;">ID / EN</button>
+                    title="Switch language / Ganti bahasa"
+                    style="padding: 9px 12px; font-weight:700; display: inline-flex; align-items: center; gap: 4px;">
+                    <span id="lang-id-label">IND</span><span
+                        style="color: var(--text-faint); font-weight: 400;">|</span><span id="lang-en-label">ENG</span>
+                </button>
                 <a href="Moch_Afiful_Islam_CV.pdf" download class="btn-ghost hide-mobile"
                     title="Unduh CV dalam format PDF">
                     <i data-lucide="download" class="w-3.5 h-3.5"></i>
-                    <span>CV</span>
+                    <span>Download CV</span>
                 </a>
                 <a href="#kontak" class="btn-primary">
                     <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                    <span class="hide-mobile" style="display:inline">Kontak</span>
+                    <span class="hide-mobile" style="display:inline" data-id="Kontak" data-en="Contact">Kontak</span>
                 </a>
             </div>
         </div>
@@ -624,19 +665,11 @@
                 </p>
 
                 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px;">
-                    <a href="#proyek" class="btn-primary" style="padding: 12px 20px;">
+                    <a href="#proyek" class="btn-primary" style="padding: 12px 50px;">
                         <i data-lucide="scan-search" class="w-4 h-4"></i> <span data-id="Lihat Proyek"
                             data-en="View Projects">Lihat Proyek</span>
                     </a>
-                    <a href="#kontak" class="btn-ghost" style="padding: 12px 20px;">
-                        <i data-lucide="mail" class="w-4 h-4"></i> <span data-id="Hubungi Saya"
-                            data-en="Contact Me">Hubungi Saya</span>
-                    </a>
-                    <a href="Moch_Afiful_Islam_CV.pdf" download class="btn-ghost" style="padding: 12px 20px;"
-                        title="Unduh CV dalam format PDF">
-                        <i data-lucide="download" class="w-4 h-4"></i> <span data-id="Unduh CV"
-                            data-en="Download CV">Unduh CV</span>
-                    </a>
+
                 </div>
 
                 <div class="mono"
@@ -648,7 +681,7 @@
             </div>
 
             <div class="reveal in bbox scan-frame"
-                style="border-radius: 0px; padding: 10px; background: var(--panel); border: 1px solid var(--line);">
+                style="border-radius: 0px; padding: 10px; background: var(--panel); border: 1px solid var(--line); max-width: 380px; width: 100%; justify-self: center; margin: 0 auto;">
                 <span class="corner c-tl"></span><span class="corner c-tr"></span>
                 <span class="corner c-bl"></span><span class="corner c-br"></span>
                 <div class="tag-detect mono">class: computer_vision_engineer</div>
@@ -658,7 +691,7 @@
                     0.99</span>
                 <div class="scan-line"></div>
                 <img src="profile.png" alt="Moch Afiful Islam"
-                    style="width: 100%; height: 100%; min-height: 320px; object-fit: cover; border-radius: 10px; display: block;">
+                    style="width: 100%; height: 100%; max-height: 440px; aspect-ratio: 4/5; object-fit: cover; object-position: top center; border-radius: 10px; display: block;">
             </div>
         </div>
 
@@ -719,20 +752,32 @@
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=700"
                         alt="Segmentasi BSI K-Means" style="width: 100%; height: 100%; object-fit: cover;">
                     <div class="tag-detect mono">class: data_science</div>
+                    <a href="https://github.com/mochafifulislam/bank-customer-segmentation-using-kmeans-clustering"
+                        target="_blank" rel="noopener noreferrer" class="mono"
+                        style="position:absolute; top:10px; right:10px; z-index:5; font-size:10px; font-weight:600; padding:4px 8px; border-radius:4px; background: rgba(11,13,16,0.85); color: var(--text); border: 1px solid var(--line-strong); display:flex; align-items:center; gap:5px; text-decoration:none; backdrop-filter:blur(4px);"
+                        title="Buka Repositori GitHub">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.755-1.333-1.755-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.807 1.305 3.492.997.108-.775.42-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
+                        <span>github</span>
+                    </a>
                 </div>
                 <div style="padding: 20px;">
                     <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
-                        <span class="chip mono">SEGMENTATION</span><span class="chip mono">BANKING</span>
+                        <span class="chip mono">SEGMENTATION</span><span class="chip mono">BANKING</span><span
+                            class="chip mono">RFM ANALYSIS</span>
                     </div>
                     <h3 style="font-size: 15.5px; font-weight: 700; margin: 0 0 8px;"
-                        data-id="Segmentasi Nasabah Perbankan dengan K-Means Clustering"
-                        data-en="Bank Customer Segmentation with K-Means Clustering">Segmentasi Nasabah Perbankan dengan
-                        K-Means Clustering</h3>
+                        data-id="Segmentasi Nasabah Perbankan Berbasis K-Means Clustering"
+                        data-en="Bank Customer Segmentation Using K-Means Clustering">Segmentasi Nasabah Perbankan
+                        Berbasis K-Means Clustering</h3>
                     <p style="font-size: 12.5px; line-height: 1.6; color: var(--text-dim); margin: 0 0 14px;"
-                        data-id="Membangun model segmentasi nasabah berbasis data transaksi & perilaku keuangan PT Bank Syariah Indonesia Tbk. untuk mendukung keputusan bisnis."
-                        data-en="Built a customer segmentation model based on PT Bank Syariah Indonesia Tbk. transaction and financial behavior data to support business decisions.">
+                        data-id="Membangun model segmentasi nasabah berbasis data transaksi & perilaku keuangan PT Bank Syariah Indonesia Tbk. Menggabungkan feature engineering dan RFM analysis untuk mendukung keputusan pemasaran terintegrasi."
+                        data-en="Developed a bank customer segmentation model leveraging PT Bank Syariah Indonesia Tbk transaction and financial behavior data. Combined feature engineering and RFM analysis to drive targeted marketing strategies.">
                         Membangun model segmentasi nasabah berbasis data transaksi & perilaku keuangan PT Bank Syariah
-                        Indonesia Tbk. untuk mendukung keputusan bisnis.
+                        Indonesia Tbk. Menggabungkan feature engineering dan RFM analysis untuk mendukung keputusan
+                        pemasaran terintegrasi.
                     </p>
                     <div style="display:flex; gap: 16px;" class="mono">
                         <div title="Metode evaluasi kualitas klaster">
@@ -744,25 +789,37 @@
                             <div style="font-size:10px; color:var(--text-faint);" data-id="METODE" data-en="METHOD">
                                 METODE
                             </div>
-                            <div style="font-size:13px; font-weight:700;">Clustering</div>
+                            <div style="font-size:13px; font-weight:700;">RFM + K-Means</div>
                         </div>
                         <div title="Library machine learning yang digunakan">
                             <div style="font-size:10px; color:var(--text-faint);">STACK</div>
                             <div style="font-size:13px; font-weight:700;">Sklearn</div>
                         </div>
                     </div>
-                    <button onclick="toggleDetail('detail-1')" class="btn-ghost"
-                        style="margin-top:14px; padding:8px 12px; font-size:11.5px; width:100%; justify-content:center;">
-                        <i data-lucide="chevron-down" class="w-3.5 h-3.5" id="detail-1-icon"></i> <span
-                            data-id="Lihat Detail" data-en="View Details">Lihat Detail</span>
-                    </button>
+                    <div style="display:flex; gap:8px; margin-top:14px;">
+                        <a href="https://github.com/mochafifulislam/bank-customer-segmentation-using-kmeans-clustering"
+                            target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                            style="flex:1; padding:8px 10px; font-size:11.5px; justify-content:center;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.755-1.333-1.755-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.807 1.305 3.492.997.108-.775.42-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                            <span data-id="Repositori" data-en="Repository">Repositori</span>
+                        </a>
+                        <button onclick="toggleDetail('detail-1')" class="btn-ghost"
+                            style="flex:1; padding:8px 10px; font-size:11.5px; justify-content:center;">
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5" id="detail-1-icon"></i> <span
+                                data-id="Lihat Detail" data-en="View Details">Lihat Detail</span>
+                        </button>
+                    </div>
                     <div id="detail-1"
                         style="display:none; margin-top:12px; padding-top:12px; border-top:1px solid var(--line); font-size:12px; line-height:1.7; color:var(--text-dim);"
-                        data-id="Tahapan meliputi data preprocessing, feature engineering, dan exploratory data analysis untuk meningkatkan kualitas & interpretabilitas klaster, sekaligus verifikasi dokumentasi nasabah dan validasi data operasional sesuai prosedur perbankan."
-                        data-en="Steps included data preprocessing, feature engineering, and exploratory data analysis to improve cluster quality & interpretability, alongside customer documentation verification and operational data validation per banking procedures.">
-                        Tahapan meliputi data preprocessing, feature engineering, dan exploratory data analysis untuk
-                        meningkatkan kualitas & interpretabilitas klaster, sekaligus verifikasi dokumentasi nasabah dan
-                        validasi data operasional sesuai prosedur perbankan.
+                        data-id="Proses end-to-end mencakup data preprocessing, penanganan missing values & outliers, feature scaling, serta Exploratory Data Analysis (EDA). Evaluasi performa klaster dilakukan menggunakan Silhouette Coefficient dan PCA visualization untuk memastikan pemisahan segmen yang optimal, interpretabil, dan selaras dengan standar operasional perbankan."
+                        data-en="Executed an end-to-end pipeline covering data preprocessing, missing value & outlier handling, feature scaling, and Exploratory Data Analysis (EDA). Evaluated clustering performance using Silhouette Coefficients and PCA visualization to ensure optimal segment separation, high interpretability, and compliance with banking operational standards.">
+                        Proses end-to-end mencakup data preprocessing, penanganan missing values & outliers, feature
+                        scaling, serta Exploratory Data Analysis (EDA). Evaluasi performa klaster dilakukan menggunakan
+                        Silhouette Coefficient dan PCA visualization untuk memastikan pemisahan segmen yang optimal,
+                        interpretabil, dan selaras dengan standar operasional perbankan.
                     </div>
                 </div>
             </div>
@@ -773,20 +830,32 @@
                     <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=700"
                         alt="VGG19 Skin Cancer" style="width: 100%; height: 100%; object-fit: cover;">
                     <div class="tag-detect mono">class: computer_vision</div>
+                    <a href="https://github.com/mochafifulislam/skin-cancer-classification-using-vgg19-model"
+                        target="_blank" rel="noopener noreferrer" class="mono"
+                        style="position:absolute; top:10px; right:10px; z-index:5; font-size:10px; font-weight:600; padding:4px 8px; border-radius:4px; background: rgba(11,13,16,0.85); color: var(--text); border: 1px solid var(--line-strong); display:flex; align-items:center; gap:5px; text-decoration:none; backdrop-filter:blur(4px);"
+                        title="Buka Repositori GitHub">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.755-1.333-1.755-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.807 1.305 3.492.997.108-.775.42-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
+                        <span>github</span>
+                    </a>
                 </div>
                 <div style="padding: 20px;">
                     <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
-                        <span class="chip mono">CLASSIFICATION</span><span class="chip mono">MEDICAL</span>
+                        <span class="chip mono">CLASSIFICATION</span><span class="chip mono">MEDICAL AI</span><span
+                            class="chip mono">TRANSFER LEARNING</span>
                     </div>
                     <h3 style="font-size: 15.5px; font-weight: 700; margin: 0 0 8px;"
-                        data-id="Klasifikasi Tujuh Lesi Kanker Kulit dengan VGG19"
-                        data-en="Seven-Class Skin Cancer Lesion Classification with VGG19">Klasifikasi Tujuh Lesi Kanker
-                        Kulit dengan VGG19</h3>
+                        data-id="Klasifikasi 7 Jenis Lesi Kanker Kulit Berbasis Transfer Learning VGG19"
+                        data-en="Seven-Class Skin Cancer Lesion Classification via VGG19 Transfer Learning">Klasifikasi
+                        7 Jenis Lesi Kanker Kulit Berbasis Transfer Learning VGG19</h3>
                     <p style="font-size: 12.5px; line-height: 1.6; color: var(--text-dim); margin: 0 0 14px;"
-                        data-id="Transfer learning VGG19 dengan image preprocessing & augmentasi data untuk klasifikasi 7 kategori lesi kulit dari citra dermoskopi."
-                        data-en="VGG19 transfer learning with image preprocessing & data augmentation to classify 7 skin lesion categories from dermoscopic images.">
-                        Transfer learning VGG19 dengan image preprocessing & augmentasi data untuk klasifikasi 7
-                        kategori lesi kulit dari citra dermoskopi.
+                        data-id="Mengembangkan pipeline Deep Learning untuk mengklasifikasikan 7 kategori lesi kulit dari citra dermoskopi HAM10000. Menggunakan VGG19 fine-tuning dan data augmentation untuk mengatasi class imbalance."
+                        data-en="Engineered a Deep Learning pipeline to classify 7 categories of skin lesions from the HAM10000 dermoscopic dataset. Leveraged fine-tuned VGG19 and data augmentation to overcome class imbalance.">
+                        Mengembangkan pipeline Deep Learning untuk mengklasifikasikan 7 kategori lesi kulit dari citra
+                        dermoskopi HAM10000. Menggunakan VGG19 fine-tuning dan data augmentation untuk mengatasi class
+                        imbalance.
                     </p>
                     <div style="display:flex; gap: 16px;" class="mono">
                         <div>
@@ -794,31 +863,43 @@
                                 data-en="EVALUATION">
                                 EVALUASI</div>
                             <div style="font-size:13px; font-weight:700; color:var(--green);"
-                                data-id="Akurasi, Presisi, Recall, F1 Score"
-                                data-en="Accuracy, Precision, Recall, F1 Score">Akurasi, Presisi, Recall, F1 Score</div>
+                                data-id="Akurasi, Presisi, Recall, F1" data-en="Accuracy, Precision, Recall, F1">
+                                Akurasi, Presisi, Recall, F1</div>
                         </div>
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);" data-id="METODE" data-en="METHOD">
                                 METODE</div>
-                            <div style="font-size:13px; font-weight:700;">Transfer Learning</div>
+                            <div style="font-size:13px; font-weight:700;">VGG19 + Augmentation</div>
                         </div>
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);">STACK</div>
                             <div style="font-size:13px; font-weight:700;">TensorFlow</div>
                         </div>
                     </div>
-                    <button onclick="toggleDetail('detail-2')" class="btn-ghost"
-                        style="margin-top:14px; padding:8px 12px; font-size:11.5px; width:100%; justify-content:center;">
-                        <i data-lucide="chevron-down" class="w-3.5 h-3.5" id="detail-2-icon"></i> <span
-                            data-id="Lihat Detail" data-en="View Details">Lihat Detail</span>
-                    </button>
+                    <div style="display:flex; gap:8px; margin-top:14px;">
+                        <a href="https://github.com/mochafifulislam/skin-cancer-classification-using-vgg19-model"
+                            target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                            style="flex:1; padding:8px 10px; font-size:11.5px; justify-content:center;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.755-1.333-1.755-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.807 1.305 3.492.997.108-.775.42-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                            <span data-id="Repositori" data-en="Repository">Repositori</span>
+                        </a>
+                        <button onclick="toggleDetail('detail-2')" class="btn-ghost"
+                            style="flex:1; padding:8px 10px; font-size:11.5px; justify-content:center;">
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5" id="detail-2-icon"></i> <span
+                                data-id="Lihat Detail" data-en="View Details">Lihat Detail</span>
+                        </button>
+                    </div>
                     <div id="detail-2"
                         style="display:none; margin-top:12px; padding-top:12px; border-top:1px solid var(--line); font-size:12px; line-height:1.7; color:var(--text-dim);"
-                        data-id="Proyek mengeksplorasi bagaimana arsitektur deep learning dapat mendukung diagnosis medis berbantuan komputer, dengan penekanan pada generalisasi model lewat augmentasi data dan preprocessing citra dermoskopi."
-                        data-en="The project explored how deep learning architectures can support computer-aided medical diagnosis, emphasizing model generalization through data augmentation and dermoscopic image preprocessing.">
-                        Proyek mengeksplorasi bagaimana arsitektur deep learning dapat mendukung diagnosis medis
-                        berbantuan komputer, dengan penekanan pada generalisasi model lewat augmentasi data dan
-                        preprocessing citra dermoskopi.
+                        data-id="Melakukan preprocessing citra dermoskopi, resolusi kompensasi, dan augmentasi geometris/warna. Fine-tuning arsitektur VGG19 terbukti meningkatkan kemampuan representasi fitur lesi kompleks. Performa model dievaluasi secara komprehensif menggunakan matriks Akurasi, Presisi, Recall, dan F1-Score untuk meminimalkan false negative pada diagnosis medis."
+                        data-en="Performed dermoscopic image preprocessing, resolution compensation, and color/geometric augmentations. Fine-tuning the VGG19 architecture significantly enhanced feature extraction for complex lesions. Model performance was comprehensively benchmarked across Accuracy, Precision, Recall, and F1-Score to minimize false negatives in medical diagnostics.">
+                        Melakukan preprocessing citra dermoskopi, resolusi kompensasi, dan augmentasi geometris/warna.
+                        Fine-tuning arsitektur VGG19 terbukti meningkatkan kemampuan representasi fitur lesi kompleks.
+                        Performa model dievaluasi secara komprehensif menggunakan matriks Akurasi, Presisi, Recall, dan
+                        F1-Score untuk meminimalkan false negative pada diagnosis medis.
                     </div>
                 </div>
             </div>
@@ -832,25 +913,26 @@
                 </div>
                 <div style="padding: 20px;">
                     <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
-                        <span class="chip mono">OBJECT DETECTION</span><span class="chip mono">TRACKING</span>
+                        <span class="chip mono">OBJECT DETECTION</span><span class="chip mono">MULTI-OBJECT
+                            TRACKING</span>
                     </div>
                     <h3 style="font-size: 15.5px; font-weight: 700; margin: 0 0 8px;"
-                        data-id="Sistem Penghitungan Kendaraan CCTV Kota Malang dengan YOLOv12"
-                        data-en="Malang City CCTV Vehicle Counting System with YOLOv12">Sistem Penghitungan
-                        Kendaraan CCTV Kota Malang dengan YOLOv12</h3>
+                        data-id="Sistem Monitoring & Tracking Kendaraan Real-Time CCTV Kota Malang (YOLOv12 + DeepSORT)"
+                        data-en="Real-Time Malang City CCTV Traffic Monitoring & Vehicle Tracking (YOLOv12 + DeepSORT)">
+                        Sistem Monitoring & Tracking Kendaraan Real-Time CCTV Kota Malang (YOLOv12 + DeepSORT)</h3>
                     <p style="font-size: 12.5px; line-height: 1.6; color: var(--text-dim); margin: 0 0 14px;"
-                        data-id="Sistem monitoring lalu lintas real-time dengan dataset CCTV hasil anotasi mandiri dari beberapa persimpangan di Kota Malang, YOLOv12 terintegrasi DeepSORT untuk multi-object tracking."
-                        data-en="A real-time traffic monitoring system using a self-annotated CCTV dataset from several intersections in Malang City, YOLOv12 integrated with DeepSORT for multi-object tracking.">
-                        Sistem monitoring lalu lintas real-time dengan dataset CCTV hasil
-                        anotasi mandiri dari beberapa persimpangan di Kota Malang, YOLOv12 terintegrasi DeepSORT untuk
-                        multi-object tracking.
+                        data-id="Membangun sistem cerdas penghitungan & pelacakan kendaraan multi-kelas berbasis CCTV lalu lintas Kota Malang. Mengintegrasikan YOLOv12 dengan DeepSORT untuk deteksi presisi tinggi dan tracking konsisten."
+                        data-en="Built an intelligent multi-class vehicle counting and tracking system using live Malang City CCTV feeds. Integrated YOLOv12 with DeepSORT for high-precision detection and consistent trajectory tracking.">
+                        Membangun sistem cerdas penghitungan & pelacakan kendaraan multi-kelas berbasis CCTV lalu lintas
+                        Kota Malang. Mengintegrasikan YOLOv12 dengan DeepSORT untuk deteksi presisi tinggi dan tracking
+                        konsisten.
                     </p>
                     <div style="display:flex; gap: 16px;" class="mono">
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);" data-id="EVALUASI"
                                 data-en="EVALUATION">EVALUASI</div>
                             <div style="font-size:13px; font-weight:700; color:var(--green);"
-                                data-id="Presisi, Recall, mAP" data-en="Precision, Recall, mAP">Precision, Recall, mAP
+                                data-id="Precision, Recall, mAP" data-en="Precision, Recall, mAP">Precision, Recall, mAP
                             </div>
                         </div>
                         <div>
@@ -870,11 +952,12 @@
                     </button>
                     <div id="detail-3"
                         style="display:none; margin-top:12px; padding-top:12px; border-top:1px solid var(--line); font-size:12px; line-height:1.7; color:var(--text-dim);"
-                        data-id="Menggunakan Ultralytics YOLO framework dengan transfer learning untuk meningkatkan performa deteksi, lalu diintegrasikan dengan DeepSORT agar setiap kendaraan dapat dilacak dan dihitung secara konsisten antar-frame video."
-                        data-en="Used the Ultralytics YOLO framework with transfer learning to improve detection performance, then integrated with DeepSORT so each vehicle could be consistently tracked and counted across video frames.">
-                        Menggunakan Ultralytics YOLO framework dengan transfer learning untuk meningkatkan performa
-                        deteksi, lalu diintegrasikan dengan DeepSORT agar setiap kendaraan dapat dilacak dan dihitung
-                        secara konsisten antar-frame video.
+                        data-id="Mengumpulkan dan melakukan anotasi mandiri (bounding box labeling) pada ribuan frame video CCTV persimpangan Malang. Melatih arsitektur YOLOv12 dengan transfer learning untuk deteksi cepat & akurat (mAP@0.5 tinggi), kemudian digabungkan dengan Kalman Filter & Hungarian Algorithm pada DeepSORT untuk mencegah kerancuan counting kendaraan antar-frame."
+                        data-en="Collected and self-annotated thousands of Malang intersection CCTV video frames. Fine-tuned YOLOv12 via transfer learning for high-speed, high-accuracy object detection (high mAP@0.5), combined with Kalman Filter & Hungarian Algorithm via DeepSORT to eliminate duplicate counting across video frames.">
+                        Mengumpulkan dan melakukan anotasi mandiri (bounding box labeling) pada ribuan frame video CCTV
+                        persimpangan Malang. Melatih arsitektur YOLOv12 dengan transfer learning untuk deteksi cepat &
+                        akurat (mAP@0.5 tinggi), kemudian digabungkan dengan Kalman Filter & Hungarian Algorithm pada
+                        DeepSORT untuk mencegah kerancuan counting kendaraan antar-frame.
                     </div>
                 </div>
             </div>
@@ -888,25 +971,28 @@
                 </div>
                 <div style="padding: 20px;">
                     <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
-                        <span class="chip mono">CLASSIFICATION</span><span class="chip mono">ENSEMBLE LEARNING</span>
+                        <span class="chip mono">CLASSIFICATION</span><span class="chip mono">ENSEMBLE
+                            LEARNING</span><span class="chip mono">PAPER IC3INA 2026</span>
                     </div>
                     <h3 style="font-size: 15.5px; font-weight: 700; margin: 0 0 8px;"
-                        data-id="Identifikasi Varietas Cabai dengan Deep Ensemble Learning"
-                        data-en="Chili Variety Identification with Deep Ensemble Learning">Identifikasi Varietas Cabai
-                        dengan Deep Ensemble Learning</h3>
+                        data-id="Identifikasi Varietas Cabai Menggunakan Stacking Deep Ensemble Learning (Konferensi IC3INA 2026)"
+                        data-en="Chili Variety Identification Using Stacking Deep Ensemble Learning (IC3INA 2026 Conference)">
+                        Identifikasi Varietas Cabai Menggunakan Stacking Deep Ensemble Learning (Konferensi IC3INA 2026)
+                    </h3>
                     <p style="font-size: 12.5px; line-height: 1.6; color: var(--text-dim); margin: 0 0 14px;"
-                        data-id="Membandingkan pendekatan transfer learning & stacking classifier untuk klasifikasi varietas cabai. Diterima untuk dipresentasikan pada konferensi internasional IC3INA 2026."
-                        data-en="Compared transfer learning & stacking classifier approaches for chili variety classification. Accepted for presentation at the IC3INA 2026 international conference.">
-                        Membandingkan pendekatan transfer learning & stacking classifier untuk klasifikasi varietas
-                        cabai. Diterima untuk dipresentasikan pada konferensi internasional IC3INA 2026.
+                        data-id="Merancang arsitektur Deep Ensemble Learning (Stacking Classifier) untuk mengklasifikasikan varietas cabai lokal. Makalah riset diterima dan dipresentasikan pada konferensi internasional IC3INA 2026."
+                        data-en="Designed a Stacking Deep Ensemble Learning framework to classify local chili varieties. Research paper accepted and presented at the peer-reviewed IEEE/BRIN IC3INA 2026 international conference.">
+                        Merancang arsitektur Deep Ensemble Learning (Stacking Classifier) untuk mengklasifikasikan
+                        varietas cabai lokal. Makalah riset diterima dan dipresentasikan pada konferensi internasional
+                        IC3INA 2026.
                     </p>
                     <div style="display:flex; gap: 16px;" class="mono">
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);" data-id="EVALUASI"
                                 data-en="EVALUATION">EVALUASI</div>
                             <div style="font-size:13px; font-weight:700; color:var(--green);"
-                                data-id="Akurasi, Presisi, Recall, F1 Score"
-                                data-en="Accuracy, Precision, Recall, F1 Score">Akurasi, Presisi, Recall, F1 Score</div>
+                                data-id="Akurasi, Presisi, Recall, F1" data-en="Accuracy, Precision, Recall, F1">
+                                Akurasi, Presisi, Recall, F1</div>
                         </div>
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);" data-id="METODE" data-en="METHOD">
@@ -915,7 +1001,7 @@
                         </div>
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);">STACK</div>
-                            <div style="font-size:13px; font-weight:700;">Pytorch</div>
+                            <div style="font-size:13px; font-weight:700;">PyTorch</div>
                         </div>
                     </div>
                     <button onclick="toggleDetail('detail-4')" class="btn-ghost"
@@ -925,11 +1011,12 @@
                     </button>
                     <div id="detail-4"
                         style="display:none; margin-top:12px; padding-top:12px; border-top:1px solid var(--line); font-size:12px; line-height:1.7; color:var(--text-dim);"
-                        data-id="Membandingkan beberapa arsitektur transfer learning sebagai base learner, kemudian menggabungkannya lewat stacking classifier untuk meningkatkan akurasi klasifikasi dibanding model tunggal."
-                        data-en="Compared several transfer learning architectures as base learners, then combined them via a stacking classifier to improve classification accuracy over a single model.">
-                        Membandingkan beberapa arsitektur transfer learning sebagai base learner, kemudian
-                        menggabungkannya lewat stacking classifier untuk meningkatkan akurasi klasifikasi dibanding
-                        model tunggal.
+                        data-id="Mengevaluasi dan membandingkan performa beberapa backbone CNN unggulan (ResNet, EfficientNet, MobileNet) sebagai base learners. Meta-learner dikembangkan menggunakan Stacking Classifier untuk menggabungkan estimasi probabilitas, terbukti mengungguli model tunggal dalam hal akurasi, presisi, dan ketahanan terhadap noise visual."
+                        data-en="Evaluated and benchmarked multiple backbone CNN architectures (ResNet, EfficientNet, MobileNet) as base learners. Developed a meta-learner using a Stacking Classifier to aggregate probability outputs, outperforming individual standalone models in classification accuracy, precision, and robustness against visual noise.">
+                        Mengevaluasi dan membandingkan performa beberapa backbone CNN unggulan (ResNet, EfficientNet,
+                        MobileNet) sebagai base learners. Meta-learner dikembangkan menggunakan Stacking Classifier
+                        untuk menggabungkan estimasi probabilitas, terbukti mengungguli model tunggal dalam hal akurasi,
+                        presisi, dan ketahanan terhadap noise visual.
                     </div>
                 </div>
             </div>
@@ -954,26 +1041,47 @@
                     style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; align-items:flex-start;">
                     <div>
                         <span class="chip mono"
-                            style="color: var(--green); border-color: var(--green-border); background: var(--green-dim);">RESEARCHER</span>
-                        <h3 style="font-size: 16px; font-weight: 700; margin: 10px 0 2px;">Computer Vision Researcher
-                        </h3>
-                        <p style="font-size: 12.5px; color: var(--text-dim); margin:0;">Badan Riset dan Inovasi Nasional
+                            style="color: var(--green); border-color: var(--green-border); background: var(--green-dim);"
+                            data-en="RESEARCH" data-id="PENELITIAN">RESEARCH</span>
+                        <h3 style="font-size: 16px; font-weight: 700; margin: 10px 0 2px;"
+                            data-id="Peneliti Computer Vision" data-en="Computer Vision Researcher">Peneliti Computer
+                            Vision</h3>
+                        <p style="font-size: 12.5px; color: var(--text-dim); margin:0;"
+                            data-id="Badan Riset dan Inovasi Nasional (BRIN) — Bandung"
+                            data-en="National Research and Innovation Agency (BRIN) — Bandung">Badan Riset dan Inovasi
+                            Nasional
                             (BRIN) — Bandung</p>
                     </div>
                     <span class="chip mono" style="color: var(--cyan); border-color: var(--cyan-border); background:
-                        var(--cyan-dim)" ;>FEB — JUL 2026</span>
+                        var(--cyan-dim)">FEB — JUL 2026</span>
                 </div>
                 <ul
                     style="font-size: 12.5px; color: var(--text-dim); line-height: 1.7; margin: 14px 0 0; padding-left: 18px;">
-                    <li>Mengembangkan model object detection & computer vision menggunakan Python, PyTorch, dan OpenCV
-                        untuk riset ilmiah dan dataset dunia nyata.</li>
-                    <li>Merancang pipeline machine learning end-to-end: pengumpulan & anotasi dataset, preprocessing,
-                        training, validasi, dan hyperparameter optimization.</li>
-                    <li>Mengevaluasi performa model menggunakan Precision, Recall, F1-Score, dan confusion matrix untuk
-                        hasil yang andal dan reprodusibel.</li>
-                    <li>Berkolaborasi dengan peneliti lintas disiplin dan menyusun dokumentasi teknis, laporan
-                        eksperimen, serta manuskrip riset.</li>
+                    <li data-id="Mengembangkan model object detection & computer vision mutakhir menggunakan Python, PyTorch, dan OpenCV untuk riset ilmiah dan dataset dunia nyata."
+                        data-en="Developed state-of-the-art object detection and computer vision models using Python, PyTorch, and OpenCV tailored for scientific research and complex real-world datasets.">
+                        Mengembangkan model object detection & computer vision mutakhir menggunakan Python, PyTorch, dan
+                        OpenCV untuk riset ilmiah dan dataset dunia nyata.</li>
+                    <li data-id="Merancang pipeline machine learning end-to-end: pengumpulan & anotasi dataset mandiri, preprocessing, training, validasi, dan hyperparameter optimization."
+                        data-en="Engineered end-to-end machine learning pipelines encompassing dataset collection, custom annotation, image preprocessing, model training, cross-validation, and hyperparameter tuning.">
+                        Merancang pipeline machine learning end-to-end: pengumpulan & anotasi dataset mandiri,
+                        preprocessing, training, validasi, dan hyperparameter optimization.</li>
+                    <li data-id="Mengevaluasi performa model menggunakan Precision, Recall, F1-Score, mAP, dan confusion matrix untuk hasil yang andal dan reprodusibel."
+                        data-en="Evaluated model performance using rigorous metrics including Precision, Recall, F1-Score, mAP, and confusion matrices to guarantee reliable and reproducible research findings.">
+                        Mengevaluasi performa model menggunakan Precision, Recall, F1-Score, mAP, dan confusion matrix
+                        untuk hasil yang andal dan reprodusibel.</li>
+                    <li data-id="Berkolaborasi dengan peneliti lintas disiplin dan menyusun dokumentasi teknis, laporan eksperimen, serta manuskrip riset internasional."
+                        data-en="Collaborated with cross-disciplinary research teams to author comprehensive technical documentation, experimental benchmarks, and international scientific manuscripts.">
+                        Berkolaborasi dengan peneliti lintas disiplin dan menyusun dokumentasi teknis, laporan
+                        eksperimen, serta manuskrip riset internasional.</li>
                 </ul>
+                <div style="display:flex; gap:8px; margin-top:14px;">
+                    <a href="https://drive.google.com/file/d/1A_tvdEY7v6zN77-WkQQUHMGk6oUbu2Es/view?usp=drive_link"
+                        target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                        style="padding:7px 12px; font-size:11px;">
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        <span data-id="Lihat Sertifikat" data-en="View Certificate">Lihat Sertifikat</span>
+                    </a>
+                </div>
             </div>
 
             <div class="timeline-dot" title="Klik kartu untuk melihat rincian peran"></div>
@@ -982,24 +1090,47 @@
                     style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; align-items:flex-start;">
                     <div>
                         <span class="chip mono"
-                            style="color: var(--green); border-color: var(--green-border); background: var(--green-dim);">TEACHING</span>
+                            style="color: var(--green); border-color: var(--green-border); background: var(--green-dim);"
+                            data-en="TEACHING" data-id="MENGAJAR">TEACHING</span>
                         <h3 style="font-size: 16px; font-weight: 700; margin: 10px 0 2px;" data-id="Asisten Praktikum"
                             data-en="Teaching Assistant">Asisten Praktikum</h3>
-                        <p style="font-size: 12.5px; color: var(--text-dim); margin:0;">Departemen Matematika
+                        <p style="font-size: 12.5px; color: var(--text-dim); margin:0;"
+                            data-id="Departemen Matematika Universitas Brawijaya — Malang"
+                            data-en="Department of Mathematics, Universitas Brawijaya — Malang">Departemen Matematika
                             Universitas Brawijaya — Malang</p>
                     </div>
                     <span class="chip mono" style="color: var(--cyan); border-color: var(--cyan-border); background:
-                        var(--cyan-dim)">FEB — DES 2025</span>
+                        var(--cyan-dim)">FEB — DEC 2025</span>
                 </div>
                 <ul
                     style="font-size: 12.5px; color: var(--text-dim); line-height: 1.7; margin: 14px 0 0; padding-left: 18px;">
-                    <li>Mengampu praktikum Algoritma Pemrograman II, Metode Numerik, Optimasi Numerik, dan Pengolahan
+                    <li data-id="Mengampu praktikum Algoritma Pemrograman II, Metode Numerik, Optimasi Numerik, dan Pengolahan Citra Digital."
+                        data-en="Served as Teaching Assistant for Programming Algorithms II, Numerical Methods, Numerical Optimization, and Digital Image Processing.">
+                        Mengampu praktikum Algoritma Pemrograman II, Metode Numerik, Optimasi Numerik, dan Pengolahan
                         Citra Digital.</li>
-                    <li>Membimbing 100+ mahasiswa dalam sesi laboratorium pemrograman, komputasi numerik, dan teknik
-                        pengolahan citra digital.</li>
-                    <li>Mendemonstrasikan implementasi praktis algoritma komputasi menggunakan Python, MATLAB, dan
-                        OpenCV.</li>
+                    <li data-id="Membimbing 100+ mahasiswa dalam sesi laboratorium komputasi algoritma, optimasi numerik, dan teknik pengolahan citra digital."
+                        data-en="Mentored 100+ undergraduate students across practical laboratory sessions in computational algorithms, numerical optimization, and digital image processing.">
+                        Membimbing 100+ mahasiswa dalam sesi laboratorium komputasi algoritma, optimasi numerik, dan
+                        teknik pengolahan citra digital.</li>
+                    <li data-id="Mendemonstrasikan implementasi praktis algoritma komputasi, pemodelan matematika, dan computer vision menggunakan Python, MATLAB, dan OpenCV."
+                        data-en="Demonstrated hands-on implementation of computational algorithms, mathematical modeling, and computer vision techniques using Python, MATLAB, and OpenCV.">
+                        Mendemonstrasikan implementasi praktis algoritma komputasi, pemodelan matematika, dan computer
+                        vision menggunakan Python, MATLAB, dan OpenCV.</li>
                 </ul>
+                <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
+                    <a href="https://drive.google.com/file/d/1ALEixUH4wSdJKdsuHs9kaLGKowVs9PXB/view?usp=drive_link"
+                        target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                        style="padding:7px 12px; font-size:11px;">
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        <span data-id="Sertifikat 1" data-en="Certificate 1">Sertifikat 1</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1aePLIGPPrf6k8MQ5qa5i2Y-d_UYAW1kK/view?usp=drive_link"
+                        target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                        style="padding:7px 12px; font-size:11px;">
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        <span data-id="Sertifikat 2" data-en="Certificate 2">Sertifikat 2</span>
+                    </a>
+                </div>
             </div>
 
             <div class="timeline-dot" title="Klik kartu untuk melihat rincian peran"></div>
@@ -1008,8 +1139,10 @@
                     style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; align-items:flex-start;">
                     <div>
                         <span class="chip mono"
-                            style="color: var(--green); border-color: var(--green-border); background: var(--green-dim);">BANKING</span>
-                        <h3 style="font-size: 16px; font-weight: 700; margin: 10px 0 2px;">Data Analytics Intern</h3>
+                            style="color: var(--green); border-color: var(--green-border); background: var(--green-dim);"
+                            data-en="BANKING" data-id="PERBANKAN">BANKING</span>
+                        <h3 style="font-size: 16px; font-weight: 700; margin: 10px 0 2px;" data-id="Magang Analis Data"
+                            data-en="Data Analytics Intern">Magang Analis Data</h3>
                         <p style="font-size: 12.5px; color: var(--text-dim); margin:0;">PT Bank Syariah Indonesia Tbk. —
                             Batam</p>
                     </div>
@@ -1018,13 +1151,27 @@
                 </div>
                 <ul
                     style="font-size: 12.5px; color: var(--text-dim); line-height: 1.7; margin: 14px 0 0; padding-left: 18px;">
-                    <li>Mengembangkan proyek segmentasi nasabah berbasis K-Means Clustering dari data operasional
+                    <li data-id="Mengembangkan proyek segmentasi nasabah berbasis K-Means Clustering dari data operasional perbankan untuk mendukung keputusan pemasaran strategis."
+                        data-en="Developed a bank customer segmentation project utilizing K-Means Clustering on operational financial data to drive strategic marketing decisions.">
+                        Mengembangkan proyek segmentasi nasabah berbasis K-Means Clustering dari data operasional
                         perbankan untuk mendukung keputusan pemasaran strategis.</li>
-                    <li>Memverifikasi dokumentasi nasabah, catatan keuangan, dan transaksi operasional sesuai prosedur
-                        perbankan.</li>
-                    <li>Memproses, memvalidasi, dan menganalisis dataset operasional & transaksional untuk pelaporan
-                        internal.</li>
+                    <li data-id="Memverifikasi dokumentasi nasabah, catatan keuangan, dan transaksi operasional sesuai prosedur tata kelola perbankan."
+                        data-en="Verified customer documentation, financial records, and operational transactions in compliance with strict banking governance procedures.">
+                        Memverifikasi dokumentasi nasabah, catatan keuangan, dan transaksi operasional sesuai prosedur
+                        tata kelola perbankan.</li>
+                    <li data-id="Memproses, memvalidasi, dan menganalisis dataset operasional & transaksional untuk pelaporan analitis internal."
+                        data-en="Processed, cleaned, and validated complex transactional datasets to deliver actionable analytical reports for executive decision-making.">
+                        Memproses, memvalidasi, dan menganalisis dataset operasional & transaksional untuk pelaporan
+                        analitis internal.</li>
                 </ul>
+                <div style="display:flex; gap:8px; margin-top:14px;">
+                    <a href="https://drive.google.com/file/d/1mqcQLwWAJI9oQxH2rFd0-cpvtmSfCSTw/view?usp=drive_link"
+                        target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                        style="padding:7px 12px; font-size:11px;">
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        <span data-id="Lihat Sertifikat" data-en="View Certificate">Lihat Sertifikat</span>
+                    </a>
+                </div>
             </div>
 
             <div class="timeline-dot" title="Klik kartu untuk melihat rincian peran"></div>
@@ -1033,24 +1180,46 @@
                     style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; align-items:flex-start;">
                     <div>
                         <span class="chip mono"
-                            style="color: var(--green); border-color: var(--green-border); background: var(--green-dim);">LEADERSHIP</span>
+                            style="color: var(--green); border-color: var(--green-border); background: var(--green-dim);"
+                            data-en="LEADERSHIP" data-id="KEPEMIMPINAN">LEADERSHIP</span>
                         <h3 style="font-size: 16px; font-weight: 700; margin: 10px 0 2px;"
-                            data-id="Ketua Umum & Wakil Ketua Umum" data-en="Chairman & Deputy Chairman">Ketua Umum &
+                            data-id="Ketua Umum & Wakil Ketua Umum" data-en="General Chairman & Deputy Chairman">Ketua
+                            Umum &
                             Wakil Ketua Umum</h3>
                         <p style="font-size: 12.5px; color: var(--text-dim); margin:0;">FORKALAM FSTeM Universitas
                             Brawijaya — Malang</p>
                     </div>
                     <span class="chip mono" style="color: var(--cyan); border-color: var(--cyan-border); background:
-                        var(--cyan-dim)">JAN 2024 — DES 2025</span>
+                        var(--cyan-dim)">JAN 2024 — DEC 2025</span>
                 </div>
                 <ul
                     style="font-size: 12.5px; color: var(--text-dim); line-height: 1.7; margin: 14px 0 0; padding-left: 18px;">
-                    <li>Memimpin organisasi mahasiswa Islam dengan 60+ anggota aktif di 8 divisi sebagai Ketua Umum
-                        (2025).</li>
-                    <li>Mengarahkan implementasi 50+ program keagamaan, sosial, dan pengembangan diri yang melayani 90+
-                        mahasiswa Fakultas MIPA.</li>
-                    <li>Mengelola perencanaan strategis, alokasi anggaran, dan evaluasi kinerja tahunan organisasi.</li>
+                    <li data-id="Memimpin organisasi mahasiswa dengan 60+ anggota aktif di 8 divisi sebagai Ketua Umum (2025)."
+                        data-en="Led a student organization of 60+ active members across 8 divisions as General Chairman (2025), steering executive decision-making.">
+                        Memimpin organisasi mahasiswa dengan 60+ anggota aktif di 8 divisi sebagai Ketua Umum (2025).
+                    </li>
+                    <li data-id="Mengarahkan implementasi 50+ program keagamaan, sosial, dan pengembangan kepemimpinan yang melayani 90+ mahasiswa Fakultas MIPA."
+                        data-en="Directed the execution of 50+ flagship social, academic, and leadership development programs serving 90+ faculty students.">
+                        Mengarahkan implementasi 50+ program keagamaan, sosial, dan pengembangan kepemimpinan yang
+                        melayani 90+ mahasiswa Fakultas MIPA.</li>
+                    <li data-id="Mengelola perencanaan strategis, alokasi anggaran, dan evaluasi kinerja tahunan organisasi."
+                        data-en="Managed strategic planning, annual budget allocations, and performance evaluation frameworks for all organizational initiatives.">
+                        Mengelola perencanaan strategis, alokasi anggaran, dan evaluasi kinerja tahunan organisasi.</li>
                 </ul>
+                <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
+                    <a href="https://drive.google.com/file/d/1cIAFpyoiyT3l0p3XuKoyVdaor7aOfk0b/view?usp=drive_link"
+                        target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                        style="padding:7px 12px; font-size:11px;">
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        <span data-id="Sertifikat 1" data-en="Certificate 1">Sertifikat 1</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1xbiKI0pPBEgpjWcU0M22iRvPRpimexj1/view?usp=drive_link"
+                        target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                        style="padding:7px 12px; font-size:11px;">
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        <span data-id="Sertifikat 2" data-en="Certificate 2">Sertifikat 2</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1066,43 +1235,43 @@
 
         <div class="grid-2 reveal">
             <div class="panel" style="padding: 24px;">
-                <div class="skill-row" data-value="92" style="margin-bottom: 18px;"
-                    title="Dipakai setiap hari untuk pipeline data & model">
+                <div class="skill-row" data-value="85" style="margin-bottom: 18px;"
+                    title="Latar belakang Sarjana Matematika">
                     <div
                         style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12.5px; font-weight:600;">
                         <span data-id="Matematika Terapan" data-en="Applied Mathematics">Matematika Terapan
-                        </span><span class="mono" style="color:var(--green);">90%</span>
-                    </div>
-                    <div class="conf-track">
-                        <div class="conf-fill"></div>
-                    </div>
-                </div>
-                <div class="skill-row" data-value="88" style="margin-bottom: 18px;"
-                    title="Riset di BRIN & skripsi YOLOv12">
-                    <div
-                        style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12.5px; font-weight:600;">
-                        <span>Computer Vision</span><span class="mono" style="color:var(--green);">88%</span>
-                    </div>
-                    <div class="conf-track">
-                        <div class="conf-fill"></div>
-                    </div>
-                </div>
-                <div class="skill-row" data-value="85" style="margin-bottom: 18px;"
-                    title="Clustering, klasifikasi & evaluasi model klasik">
-                    <div
-                        style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12.5px; font-weight:600;">
-                        <span data-id="Pembelajaran Mesin" data-en="Machine Learning">Pembelajaran Mesin
                         </span><span class="mono" style="color:var(--green);">85%</span>
                     </div>
                     <div class="conf-track">
                         <div class="conf-fill"></div>
                     </div>
                 </div>
-                <div class="skill-row" data-value="80" title="Latar belakang Sarjana Matematika">
+                <div class="skill-row" data-value="90" style="margin-bottom: 18px;"
+                    title="Riset di BRIN & skripsi YOLOv12">
+                    <div
+                        style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12.5px; font-weight:600;">
+                        <span>Computer Vision</span><span class="mono" style="color:var(--green);">90%</span>
+                    </div>
+                    <div class="conf-track">
+                        <div class="conf-fill"></div>
+                    </div>
+                </div>
+                <div class="skill-row" data-value="90" style="margin-bottom: 18px;"
+                    title="Clustering, klasifikasi, & evaluasi model klasik">
+                    <div
+                        style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12.5px; font-weight:600;">
+                        <span data-id="Pembelajaran Mesin" data-en="Machine Learning">Pembelajaran Mesin
+                        </span><span class="mono" style="color:var(--green);">90%</span>
+                    </div>
+                    <div class="conf-track">
+                        <div class="conf-fill"></div>
+                    </div>
+                </div>
+                <div class="skill-row" data-value="85" title="Pengalaman PKL">
                     <div
                         style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12.5px; font-weight:600;">
                         <span data-id="Sains Data" data-en="Data Science">Sains Data</span><span class="mono"
-                            style="color:var(--green);">80%</span>
+                            style="color:var(--green);">85%</span>
                     </div>
                     <div class="conf-track">
                         <div class="conf-fill"></div>
@@ -1112,11 +1281,11 @@
 
             <div class="panel" style="padding: 24px;">
                 <div style="font-size: 12px; font-weight: 700; color: var(--text-dim); margin-bottom: 14px;"
-                    data-id="TOOLS & FRAMEWORKS TERDETEKSI" data-en="TOOLS & FRAMEWORKS DETECTED">TOOLS & FRAMEWORKS
-                    TERDETEKSI</div>
+                    data-id="TOOLS & FRAMEWORKS" data-en="TOOLS & FRAMEWORKS">TOOLS & FRAMEWORKS
+                </div>
                 <div style="display:flex; flex-wrap:wrap; gap:8px;">
                     <span class="chip mono" style="color: var(--cyan); border-color: var(--cyan-border); background:
-                        var(--cyan-dim)">Python (Advanced)</span><span class="chip mono" style="color: var(--green); border-color: var(--green-border); background:
+                        var(--cyan-dim)">Python</span><span class="chip mono" style="color: var(--green); border-color: var(--green-border); background:
                         var(--green-dim)">MATLAB</span>
                     <span class="chip mono" style="color: var(--cyan); border-color: var(--cyan-border); background:
                         var(--cyan-dim)">PyTorch</span><span class="chip mono" style="color: var(--green); border-color: var(--green-border); background:
@@ -1201,47 +1370,96 @@
                 <div class="mono" style="font-size: 13px; font-weight: 700; color: var(--green);"
                     data-id="IPK 3.18 / 4.00" data-en="GPA 3.18 / 4.00">IPK 3.18 / 4.00</div>
             </div>
-            <div class="panel" style="padding: 22px;">
-                <div class="eyebrow" style="font-size:10px;" data-id="BAHASA INGGRIS" data-en="ENGLISH PROFICIENCY">
-                    <span class="dash"></span> BAHASA INGGRIS
+            <div class="panel card-hover"
+                style="padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div class="eyebrow" style="font-size:10px;" data-id="BAHASA INGGRIS" data-en="ENGLISH PROFICIENCY">
+                        <span class="dash"></span> BAHASA INGGRIS
+                    </div>
+                    <h3 style="font-size: 15.5px; font-weight: 700; margin: 10px 0 2px;">Brawijaya English Proficiency
+                        Test
+                    </h3>
+                    <p style="font-size: 12.5px; color: var(--text-dim); margin: 0 0 10px;"
+                        data-id="Diterbitkan resmi oleh Brawijaya Language Center"
+                        data-en="Officially issued by Brawijaya Language Center">Diterbitkan resmi oleh Brawijaya
+                        Language
+                        Center</p>
+                    <div class="mono" style="font-size: 13px; font-weight: 700; color: var(--cyan);"
+                        data-id="Skor 500 / 677" data-en="Score 500 / 677">Skor 500 / 677</div>
                 </div>
-                <h3 style="font-size: 15.5px; font-weight: 700; margin: 10px 0 2px;">Brawijaya English Proficiency Test
-                </h3>
-                <p style="font-size: 12.5px; color: var(--text-dim); margin: 0 0 10px;"
-                    data-id="Diterbitkan resmi oleh Brawijaya Language Center"
-                    data-en="Officially issued by Brawijaya Language Center">Diterbitkan resmi oleh Brawijaya Language
-                    Center</p>
-                <div class="mono" style="font-size: 13px; font-weight: 700; color: var(--cyan);"
-                    data-id="Skor 500 / 677" data-en="Score 500 / 677">Skor 500 / 677</div>
+                <a href="https://drive.google.com/file/d/1N27La9WIo6ljx1uDcrJTD_LnQczMWFaW/view?usp=drive_link"
+                    target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                    style="margin-top: 14px; padding: 7px 12px; font-size: 11px; width: fit-content;">
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    <span data-id="Lihat Sertifikat" data-en="View Certificate">Lihat Sertifikat</span>
+                </a>
             </div>
         </div>
 
         <div class="grid-4 reveal" style="margin-bottom: 20px;">
-            <div class="panel" style="padding: 20px;">
-                <div class="mono" style="font-size:11px; color:var(--amber); font-weight:700; margin-bottom:8px;"
-                    data-id="SERTIFIKASI" data-en="CERTIFICATION">SERTIFIKASI</div>
-                <h4 style="font-size: 13.5px; font-weight: 700; margin: 0 0 4px;">Generative AI Certification</h4>
-                <p style="font-size: 12px; color: var(--text-faint); margin:0;">Institute for Data Innovation &
-                    Artificial Intelligence</p>
+            <div class="panel card-hover"
+                style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div class="mono" style="font-size:11px; color:var(--amber); font-weight:700; margin-bottom:8px;"
+                        data-id="SERTIFIKASI" data-en="CERTIFICATION">SERTIFIKASI</div>
+                    <h4 style="font-size: 13.5px; font-weight: 700; margin: 0 0 4px;">Generative AI Certification</h4>
+                    <p style="font-size: 12px; color: var(--text-faint); margin:0;">Institute for Data Innovation &
+                        Artificial Intelligence</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1VS6T_9vC8cnnibMl0fu8LBCMtvFdcbsf/view?usp=drive_link"
+                    target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                    style="margin-top: 14px; padding: 6px 10px; font-size: 10.5px; justify-content: center;">
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                    <span data-id="Lihat Sertifikat" data-en="View Certificate">Lihat Sertifikat</span>
+                </a>
             </div>
-            <div class="panel" style="padding: 20px;">
-                <div class="mono" style="font-size:11px; color:var(--amber); font-weight:700; margin-bottom:8px;"
-                    data-id="SERTIFIKASI" data-en="CERTIFICATION">SERTIFIKASI</div>
-                <h4 style="font-size: 13.5px; font-weight: 700; margin: 0 0 4px;">Certified Azure AI Fundamentals</h4>
-                <p style="font-size: 12px; color: var(--text-faint); margin:0;">Microsoft</p>
+            <div class="panel card-hover"
+                style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div class="mono" style="font-size:11px; color:var(--amber); font-weight:700; margin-bottom:8px;"
+                        data-id="SERTIFIKASI" data-en="CERTIFICATION">SERTIFIKASI</div>
+                    <h4 style="font-size: 13.5px; font-weight: 700; margin: 0 0 4px;">Certified Azure AI Fundamentals
+                    </h4>
+                    <p style="font-size: 12px; color: var(--text-faint); margin:0;">Microsoft</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1ZR5w-EEJq7MLQKsg_IOM1IHhJdGchqsG/view?usp=drive_link"
+                    target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                    style="margin-top: 14px; padding: 6px 10px; font-size: 10.5px; justify-content: center;">
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                    <span data-id="Lihat Sertifikat" data-en="View Certificate">Lihat Sertifikat</span>
+                </a>
             </div>
-            <div class="panel" style="padding: 20px;">
-                <div class="mono" style="font-size:11px; color:var(--amber); font-weight:700; margin-bottom:8px;"
-                    data-id="SERTIFIKASI" data-en="CERTIFICATION">SERTIFIKASI</div>
-                <h4 style="font-size: 13.5px; font-weight: 700; margin: 0 0 4px;">Microsoft Office Desktop Application
-                </h4>
-                <p style="font-size: 12px; color: var(--text-faint); margin:0;">Trust Training Partners</p>
+            <div class="panel card-hover"
+                style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div class="mono" style="font-size:11px; color:var(--amber); font-weight:700; margin-bottom:8px;"
+                        data-id="SERTIFIKASI" data-en="CERTIFICATION">SERTIFIKASI</div>
+                    <h4 style="font-size: 13.5px; font-weight: 700; margin: 0 0 4px;">Microsoft Office Desktop
+                        Application</h4>
+                    <p style="font-size: 12px; color: var(--text-faint); margin:0;">Trust Training Partners</p>
+                </div>
+                <a href="https://drive.google.com/file/d/18pgRz94CtOPpRpMx9JgzWcoqcH68sIMI/view?usp=drive_link"
+                    target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                    style="margin-top: 14px; padding: 6px 10px; font-size: 10.5px; justify-content: center;">
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                    <span data-id="Lihat Sertifikat" data-en="View Certificate">Lihat Sertifikat</span>
+                </a>
             </div>
-            <div class="panel" style="padding: 20px;">
-                <div class="mono" style="font-size:11px; color:var(--amber); font-weight:700; margin-bottom:8px;"
-                    data-id="SERTIFIKASI" data-en="CERTIFICATION">SERTIFIKASI</div>
-                <h4 style="font-size: 13.5px; font-weight: 700; margin: 0 0 4px;">ASEAN Data Science Explorers 2024</h4>
-                <p style="font-size: 12px; color: var(--text-faint); margin:0;">Enablement Session</p>
+            <div class="panel card-hover"
+                style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div class="mono" style="font-size:11px; color:var(--amber); font-weight:700; margin-bottom:8px;"
+                        data-id="SERTIFIKASI" data-en="CERTIFICATION">SERTIFIKASI</div>
+                    <h4 style="font-size: 13.5px; font-weight: 700; margin: 0 0 4px;">ASEAN Data Science Explorers 2024
+                    </h4>
+                    <p style="font-size: 12px; color: var(--text-faint); margin:0;">Enablement Session</p>
+                </div>
+                <a href="https://drive.google.com/file/d/17_c2hzpYOfZXaMwAbYgZ2amO52m-1-d4/view?usp=drive_link"
+                    target="_blank" rel="noopener noreferrer" class="btn-ghost"
+                    style="margin-top: 14px; padding: 6px 10px; font-size: 10.5px; justify-content: center;">
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                    <span data-id="Lihat Sertifikat" data-en="View Certificate">Lihat Sertifikat</span>
+                </a>
             </div>
         </div>
 
@@ -1249,12 +1467,24 @@
             <div class="mono" style="font-size:11px; color:var(--text-faint); font-weight:700; margin-bottom:12px;"
                 data-id="PRESTASI NON AKADEMIK" data-en="NON ACADEMIC ACHIEVEMENTS">PRESTASI NON AKADEMIK</div>
             <div style="display:flex; flex-wrap:wrap; gap: 10px;">
-                <span class="chip" style="color: var(--amber); border-color: var(--amber-border); background:
-                        var(--amber-dim)">🥇 Musabaqah Fahmil Qur'an (MFQ) — 1st Place, MTQ UB 2024</span>
-                <span class="chip" style="color: var(--green); border-color: var(--green-border); background:
-                        var(--green-dim)">🥈 Musabaqah Hifdzil Qur'an 20 Juz (MHQ20) — 2nd Place, MTQ UB 2025</span>
-                <span class="chip" style="color: var(--cyan); border-color: var(--cyan-border); background:
-                        var(--cyan-dim)">🥈 Musabaqah Debat Ilmiah Al-Qur'an (MDIA) — 2nd Place, MTQ UB 2023</span>
+                <a href="https://drive.google.com/file/d/1VA916i7P3j3F2EAtWvdlnLxBfzV05csA/view?usp=drive_link"
+                    target="_blank" rel="noopener noreferrer" class="chip card-hover"
+                    style="color: var(--amber); border-color: var(--amber-border); background: var(--amber-dim); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <span>🥇 Musabaqah Fahmil Qur'an (MFQ) — 1st Place, MTQ UB 2024</span>
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+                <a href="https://drive.google.com/file/d/1xbx3hQ6VvXsPqQMAuOgTtyC6JCeYoNj8/view?usp=drive_link"
+                    target="_blank" rel="noopener noreferrer" class="chip card-hover"
+                    style="color: var(--green); border-color: var(--green-border); background: var(--green-dim); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <span>🥈 Musabaqah Hifdzil Qur'an 20 Juz (MHQ20) — 2nd Place, MTQ UB 2025</span>
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+                <a href="https://drive.google.com/file/d/1VJmpOXOGXU0fxj1wlDnSHXSZRZiBmSH5/view?usp=drive_link"
+                    target="_blank" rel="noopener noreferrer" class="chip card-hover"
+                    style="color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <span>🥈 Musabaqah Debat Ilmiah Al-Qur'an (MDIA) — 2nd Place, MTQ UB 2023</span>
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -1339,14 +1569,19 @@
             <form id="contact-form" class="panel" style="padding: 26px;">
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
                     <div><label data-id="Nama Lengkap" data-en="Full Name">Nama Lengkap</label><input type="text"
-                            name="name" required placeholder="Nama Anda"></div>
+                            name="name" required placeholder="Nama Anda" data-id="Nama Anda" data-en="Your Name"></div>
                     <div><label>Email</label><input type="email" name="email" required
-                            placeholder="email@perusahaan.com"></div>
+                            placeholder="email@perusahaan.com" data-id="email@perusahaan.com"
+                            data-en="email@company.com"></div>
                 </div>
                 <div style="margin-bottom:14px;"><label data-id="Subjek" data-en="Subject">Subjek</label><input
-                        type="text" name="subject" required placeholder="Penawaran Karir / Kolaborasi Riset"></div>
+                        type="text" name="subject" required placeholder="Penawaran Karir / Kolaborasi Riset"
+                        data-id="Penawaran Karir / Kolaborasi Riset"
+                        data-en="Career Opportunities / Research Collaborations"></div>
                 <div style="margin-bottom:18px;"><label data-id="Pesan" data-en="Message">Pesan</label><textarea
-                        rows="4" name="message" required placeholder="Tuliskan detail penawaran Anda..."></textarea>
+                        rows="4" name="message" required placeholder="Tuliskan detail penawaran Anda..."
+                        data-id="Tuliskan detail penawaran Anda..."
+                        data-en="Write down the details of your offer..."></textarea>
                 </div>
                 <button type="submit" id="submit-btn" class="btn-primary"
                     style="width:100%; justify-content:center; padding: 13px;">
@@ -1365,19 +1600,41 @@
     <footer style="border-top: 1px solid var(--line); padding: 26px 24px;">
         <div class="wrap"
             style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; align-items:center;">
-            <span class="mono" style="font-size:11px; color:var(--text-faint);">© 2026 Moch Afiful Islam. Built with
-                intent.</span>
+            <span class="mono" style="font-size:11px; color:var(--text-faint);">© 2026 Moch Afiful Islam.</span>
             <span class="mono" style="font-size:11px; color:var(--text-faint);">STATUS: <span style="color:#34d399;"
-                    data-id="OPEN FOR AI & DATA ROLES" data-en="OPEN FOR AI & DATA ROLES">OPEN FOR AI & DATA
-                    ROLES</span></span>
+                    data-id="TERBUKA UNTUK PERAN AI & DATA" data-en="OPEN FOR AI & DATA ROLES">TERBUKA UNTUK PERAN AI &
+                    DATA</span></span>
         </div>
     </footer>
 
     <div id="toast" class="toast mono"><i data-lucide="check-circle-2" class="w-4 h-4"
             style="color: var(--green);"></i><span id="toast-text">Disalin</span></div>
 
+    <!-- Back to Top Floating Button -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" title="Kembali ke atas / Back to top"
+        aria-label="Back to top">
+        <i data-lucide="arrow-up" class="w-4 h-4"></i>
+    </button>
+
     <script>
         lucide.createIcons();
+
+        // Back to top floating button logic
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
         // language toggle (ID <-> EN)
         let currentLang = 'id';
@@ -1390,13 +1647,29 @@
                     el.textContent = val;
                 }
             });
-            document.getElementById('lang-toggle').style.color = currentLang === 'en' ? 'var(--green)' : '';
+            const idLabel = document.getElementById('lang-id-label');
+            const enLabel = document.getElementById('lang-en-label');
+            if (idLabel && enLabel) {
+                if (currentLang === 'id') {
+                    idLabel.style.color = 'var(--green)';
+                    idLabel.style.fontWeight = '700';
+                    enLabel.style.color = 'var(--text-faint)';
+                    enLabel.style.fontWeight = '500';
+                } else {
+                    idLabel.style.color = 'var(--text-faint)';
+                    idLabel.style.fontWeight = '500';
+                    enLabel.style.color = 'var(--green)';
+                    enLabel.style.fontWeight = '700';
+                }
+            }
             document.documentElement.setAttribute('lang', currentLang);
         }
         function toggleLang() {
             currentLang = currentLang === 'id' ? 'en' : 'id';
             applyLang();
         }
+        // Initialize language state on load
+        applyLang();
 
         // expandable project/detail sections
         function toggleDetail(id) {
@@ -1432,7 +1705,7 @@
         function updateClock() {
             const now = new Date();
             const t = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            const label = currentLang === 'id' ? 'Malang, Jawa Timur // Terbuka untuk Peran Data & AI' : 'Malang, Jawa Timur // Open for Data & AI Roles';
+            const label = currentLang === 'id' ? 'Malang, Jawa Timur' : 'Malang, Jawa Timur';
             clockEl.textContent = `${label} // ${t}`;
         }
         updateClock();
