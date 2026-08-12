@@ -148,6 +148,15 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: opacity .2s ease;
+        }
+
+        .brand:hover {
+            opacity: 0.75;
+        }
+
+        .brand:hover .brand-mark {
+            border-color: var(--green);
         }
 
         .brand-mark {
@@ -625,13 +634,13 @@
     <!-- ================= TOP NAV ================= -->
     <nav class="topnav">
         <div class="wrap topnav-inner">
-            <div class="brand">
+            <a href="#home" class="brand" title="Kembali ke atas / Back to home" style="cursor: pointer;">
                 <div class="brand-mark mono">AI</div>
                 <div>
                     <div class="brand-name">Moch Afiful Islam</div>
 
                 </div>
-            </div>
+            </a>
             <div class="nav-links hide-mobile">
                 <a href="#proyek" data-id="Proyek" data-en="Projects">Proyek</a>
                 <a href="#pengalaman" data-id="Pengalaman" data-en="Experience">Pengalaman</a>
@@ -658,7 +667,7 @@
         </div>
     </nav>
     <!-- ================= HERO ================= -->
-    <header class="wrap" style="padding-top: 64px; padding-bottom: 40px; position: relative;">
+    <header id="home" class="wrap" style="padding-top: 64px; padding-bottom: 40px; position: relative;">
         <div
             style="position:absolute; top:-80px; right:-120px; width:520px; height:520px; background: radial-gradient(circle, rgba(186,255,77,0.10) 0%, rgba(186,255,77,0) 70%); pointer-events:none; z-index:0;">
         </div>
