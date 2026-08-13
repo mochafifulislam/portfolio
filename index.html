@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Moch Afiful Islam — Computer Vision Engineer</title>
     <meta name="description"
         content="Portfolio Moch Afiful Islam — Lulusan Matematika Universitas Brawijaya, peneliti Computer Vision di BRIN, spesialis Machine Learning & Data Science.">
@@ -594,9 +594,9 @@
         /* ---- Back to top floating button ---- */
         .back-to-top {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 99;
+            bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+            right: calc(24px + env(safe-area-inset-right, 0px));
+            z-index: 999;
             width: 44px;
             height: 44px;
             border-radius: 12px;
@@ -610,8 +610,14 @@
             opacity: 0;
             visibility: hidden;
             transform: translateY(12px);
-            transition: all .3s ease;
+            transition: opacity .3s ease, transform .3s ease, visibility .3s;
             box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.6);
+        }
+
+        @media (max-width: 780px) {
+            .back-to-top {
+                bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+            }
         }
 
         .back-to-top.show {
@@ -716,7 +722,8 @@
                 style="border-radius: 0px; padding: 10px; background: var(--panel); border: 1px solid var(--line); box-shadow: 0 30px 70px -20px rgba(0,0,0,0.65); max-width: 400px; width: 100%; justify-self: center; margin: 0 auto;">
                 <span class="corner c-tl"></span><span class="corner c-tr"></span>
                 <span class="corner c-bl"></span><span class="corner c-br"></span>
-                <div class="tag-detect mono">detected: moch_afiful_islam</div>
+                <div class="tag-detect mono" data-en="detected: moch_afiful_islam"
+                    data-id="terdeteksi: moch_afiful_islam">detected: moch_afiful_islam</div>
                 <span class="mono"
                     style="position:absolute; bottom:22px; right:22px; z-index:5; font-size:10px; font-weight:700; background: rgba(11,13,16,0.75); color: var(--green); padding: 4px 8px; border-radius: 4px; border: 2px solid var(--green-border);">confidence
                     score:
@@ -793,7 +800,10 @@
                 </div>
                 <div style="padding: 20px;">
                     <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
-                        <span class="chip mono">SEGMENTATION</span><span class="chip mono">BANKING</span>
+                        <span class="chip mono"
+                            style="color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim);">SEGMENTATION</span><span
+                            class="chip mono"
+                            style="color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim);">BANKING</span>
                     </div>
                     <h3 style="font-size: 15.5px; font-weight: 700; margin: 0 0 8px;"
                         data-id="Segmentasi Nasabah Perbankan Berbasis K-Means Clustering"
@@ -816,7 +826,7 @@
                             <div style="font-size:10px; color:var(--text-faint);" data-id="METODE" data-en="METHOD">
                                 METODE
                             </div>
-                            <div style="font-size:13px; font-weight:700;">K-Means Clustering</div>
+                            <div style="font-size:13px; font-weight:700; color:var(--green);">K-Means Clustering</div>
                         </div>
                         <div title="Library machine learning yang digunakan">
                             <div style="font-size:10px; color:var(--text-faint);">STACK</div>
@@ -861,8 +871,13 @@
                 </div>
                 <div style="padding: 20px;">
                     <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
-                        <span class="chip mono">CLASSIFICATION</span><span class="chip mono">MEDICAL AI</span><span
-                            class="chip mono">TRANSFER LEARNING</span>
+                        <span class="chip mono"
+                            style="color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim);">CLASSIFICATION</span><span
+                            class="chip mono"
+                            style="color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim);">MEDICAL
+                            AI</span><span class="chip mono"
+                            style="color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim);">TRANSFER
+                            LEARNING</span>
                     </div>
                     <h3 style="font-size: 15.5px; font-weight: 700; margin: 0 0 8px;"
                         data-id="Klasifikasi 7 Jenis Lesi Kanker Kulit Berbasis Transfer Learning VGG19"
@@ -887,7 +902,7 @@
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);" data-id="METODE" data-en="METHOD">
                                 METODE</div>
-                            <div style="font-size:13px; font-weight:700;">VGG19 + Augmentation</div>
+                            <div style="font-size:13px; font-weight:700; color:var(--green);">VGG19 + Augmentation</div>
                         </div>
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);">STACK</div>
@@ -931,7 +946,10 @@
                 </div>
                 <div style="padding: 20px;">
                     <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
-                        <span class="chip mono">OBJECT DETECTION</span><span class="chip mono">MULTI-OBJECT
+                        <span class="chip mono"
+                            style="color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim);">OBJECT
+                            DETECTION</span><span class="chip mono"
+                            style="color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim);">MULTI-OBJECT
                             TRACKING</span>
                     </div>
                     <h3 style="font-size: 15.5px; font-weight: 700; margin: 0 0 8px;"
@@ -956,7 +974,7 @@
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);" data-id="METODE" data-en="METHOD">
                                 METODE</div>
-                            <div style="font-size:13px; font-weight:700;">YOLOv12 + DeepSORT</div>
+                            <div style="font-size:13px; font-weight:700; color:var(--green);">YOLOv12 + DeepSORT</div>
                         </div>
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);">STACK</div>
@@ -1000,8 +1018,13 @@
                 </div>
                 <div style="padding: 20px;">
                     <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
-                        <span class="chip mono">CLASSIFICATION</span><span class="chip mono">ENSEMBLE
-                            LEARNING</span><span class="chip mono">PAPER IC3INA 2026</span>
+                        <span class="chip mono"
+                            style="color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim);">CLASSIFICATION</span><span
+                            class="chip mono"
+                            style="color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim);">ENSEMBLE
+                            LEARNING</span><span class="chip mono"
+                            style="color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim);">PAPER
+                            IC3INA 2026</span>
                     </div>
                     <h3 style="font-size: 15.5px; font-weight: 700; margin: 0 0 8px;"
                         data-id="Identifikasi Varietas Cabai Menggunakan Stacking Deep Ensemble Learning (Konferensi IC3INA 2026)"
@@ -1026,7 +1049,7 @@
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);" data-id="METODE" data-en="METHOD">
                                 METODE</div>
-                            <div style="font-size:13px; font-weight:700;">Stacking & TL</div>
+                            <div style="font-size:13px; font-weight:700; color:var(--green);">Stacking & TL</div>
                         </div>
                         <div>
                             <div style="font-size:10px; color:var(--text-faint);">STACK</div>
@@ -1657,13 +1680,16 @@
 
         // Back to top floating button logic
         const backToTopBtn = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
+        function checkScrollPos() {
+            const scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            if (scrollPos > 300) {
                 backToTopBtn.classList.add('show');
             } else {
                 backToTopBtn.classList.remove('show');
             }
-        });
+        }
+        window.addEventListener('scroll', checkScrollPos, { passive: true });
+        checkScrollPos();
 
         function scrollToTop() {
             window.scrollTo({
