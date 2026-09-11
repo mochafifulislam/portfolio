@@ -47,11 +47,12 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 70px;
         }
 
         html,
         body {
-            overflow-x: hidden;
+            overflow-x: clip;
             max-width: 100%;
         }
 
@@ -114,11 +115,15 @@
 
         /* ---- top nav ---- */
         .topnav {
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 50;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
             background: rgba(11, 13, 16, 0.86);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--line);
         }
 
@@ -680,7 +685,7 @@
     </nav>
     <!-- ================= HERO ================= -->
     <header id="home" class="wrap"
-        style="padding-top: 64px; padding-bottom: 40px; position: relative; overflow-x: clip;">
+        style="padding-top: 104px; padding-bottom: 40px; position: relative; overflow-x: clip;">
         <div
             style="position:absolute; top:-80px; right:-120px; width:520px; height:520px; background: radial-gradient(circle, rgba(186,255,77,0.10) 0%, rgba(186,255,77,0) 70%); pointer-events:none; z-index:0;">
         </div>
